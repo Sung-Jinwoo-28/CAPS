@@ -168,10 +168,10 @@
     <nav
         class="sticky top-0 z-50 glass-panel border-b border-brand-greyblue/20 px-6 py-4 flex justify-between items-center blur-backdrop">
         <a href="index.html" class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
-            <img src="https://i.postimg.cc/1XjHKYZy/CAPS-Square-Blue-White-Logo-(1).png" alt="CAPS Logo"
+            <img src="https://drive.google.com/thumbnail?id=1EurCCG3ucgcsmKBF4Rkcd2sGjlsKIYOE&sz=s3000" alt="CAPS Logo"
                 class="h-12 md:h-16 w-auto">
         </a>
-        <a href="index.html"
+        <a href="index.html" id="back-home-btn"
             class="text-brand-cream hover:text-brand-yellow transition-colors font-semibold flex items-center gap-2">
             <i class="fas fa-arrow-left"></i> Back to Home
         </a>
@@ -326,6 +326,77 @@
                     btn.disabled = false;
                 });
         });
+    </script>
+
+    <!-- Back Button Modal -->
+    <div id="exit-modal"
+        class="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="glass-panel p-8 md:p-10 rounded-3xl max-w-lg w-full text-center relative overflow-hidden transform transition-all scale-95 opacity-0"
+            id="exit-modal-content">
+            <!-- Decorative Glow -->
+            <div
+                class="absolute -top-20 -right-20 w-64 h-64 bg-brand-yellow/10 rounded-full blur-3xl pointer-events-none">
+            </div>
+
+            <div
+                class="w-16 h-16 mx-auto bg-brand-yellow/10 rounded-full flex items-center justify-center mb-6 text-brand-yellow">
+                <i class="fas fa-gift text-3xl animate-pulse"></i>
+            </div>
+
+            <h3 class="text-3xl font-bold text-brand-cream mb-4">Wait! Don't Miss Out</h3>
+            <p class="text-brand-lightblue text-lg mb-8">
+                Spots are filling up fast for the <span class="text-brand-yellow font-bold">Leadership Summit</span>.
+                Register now to secure your access to exclusive networking sessions!
+            </p>
+
+            <div class="flex flex-col gap-4">
+                <button onclick="closeExitModal()"
+                    class="w-full py-4 bg-brand-yellow text-brand-darkblue rounded-xl font-bold text-lg uppercase tracking-wider hover:scale-[1.02] transition-transform">
+                    Continue Registration
+                </button>
+                <a href="index.html" class="text-brand-greyblue hover:text-brand-cream text-sm font-semibold py-2">
+                    I'll come back later
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Back Button Logic
+        (function () {
+            const exitModal = document.getElementById('exit-modal');
+            const exitModalContent = document.getElementById('exit-modal-content');
+            const backHomeBtn = document.getElementById('back-home-btn');
+
+            let hasSeenModal = false;
+
+            if (backHomeBtn) {
+                backHomeBtn.addEventListener('click', function (e) {
+                    if (!hasSeenModal) {
+                        e.preventDefault(); // Stop navigation
+
+                        // Show Modal
+                        exitModal.classList.remove('hidden');
+                        setTimeout(() => {
+                            exitModalContent.classList.remove('scale-95', 'opacity-0');
+                            exitModalContent.classList.add('scale-100', 'opacity-100');
+                        }, 10);
+
+                        hasSeenModal = true; // Mark as seen
+                    }
+                    // If hasSeenModal is true, we simply let the link work (navigate to index.html)
+                });
+            }
+
+            // Expose close function globally
+            window.closeExitModal = function () {
+                exitModalContent.classList.remove('scale-100', 'opacity-100');
+                exitModalContent.classList.add('scale-95', 'opacity-0');
+                setTimeout(() => {
+                    exitModal.classList.add('hidden');
+                }, 300);
+            };
+        })();
     </script>
 </body>
 

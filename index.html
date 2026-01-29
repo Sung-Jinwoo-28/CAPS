@@ -40,6 +40,7 @@
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'shooting-star': 'shooting 3s linear infinite',
                         'twinkle': 'twinkle 4s ease-in-out infinite',
+                        'scroll': 'scroll 20s linear infinite',
                     },
                     keyframes: {
                         float: {
@@ -58,6 +59,10 @@
                         loading: {
                             '0%': { width: '0%' },
                             '100%': { width: '100%' }
+                        },
+                        scroll: {
+                            '0%': { transform: 'translateX(-50%)' },
+                            '100%': { transform: 'translateX(0)' }
                         }
                     }
                 }
@@ -233,8 +238,8 @@
         <nav
             class="sticky top-0 z-50 glass-panel border-b border-brand-greyblue/20 px-6 py-4 flex justify-between items-center transition-all duration-300">
             <a href="index.html" class="flex items-center space-x-3">
-                <img src="https://i.postimg.cc/1XjHKYZy/CAPS-Square-Blue-White-Logo-(1).png" alt="CAPS Logo"
-                    class="h-12 md:h-18 w-auto transition-all duration-300">
+                <img src="https://drive.google.com/thumbnail?id=1EurCCG3ucgcsmKBF4Rkcd2sGjlsKIYOE&sz=s3000"
+                    alt="CAPS Logo" class="h-12 md:h-18 w-auto transition-all duration-300">
             </a>
 
             <!-- Desktop Menu -->
@@ -283,7 +288,7 @@
 
         <!-- Hero Section -->
         <header
-            class="container mx-auto min-h-[85vh] md:min-h-[90vh] flex flex-col justify-center items-center text-center px-4 relative pb-16 md:pb-0">
+            class="container mx-auto min-h-screen md:min-h-[90vh] flex flex-col justify-center items-center text-center px-4 relative pb-32 md:pb-0">
             <div class="absolute inset-0 flex justify-center items-center opacity-30 pointer-events-none">
                 <div
                     class="w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-brand-blue opacity-40 blur-[100px] md:blur-[150px] rounded-full animate-pulse-slow">
@@ -325,32 +330,37 @@
             </a>
 
             <!-- Countdown Timer -->
-            <div id="countdown" class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-4xl mx-auto">
+            <div id="countdown" class="mt-16 grid grid-cols-4 gap-2 md:gap-8 max-w-4xl mx-auto w-full px-2 md:px-0">
                 <!-- Days -->
                 <div
-                    class="glass-panel p-4 rounded-xl flex flex-col items-center justify-center min-w-[100px] md:min-w-[120px]">
-                    <span id="days" class="text-3xl md:text-5xl font-bold text-brand-yellow font-mono">00</span>
-                    <span class="text-xs md:text-sm text-brand-lightblue uppercase tracking-widest mt-2">Days</span>
+                    class="glass-panel p-2 md:p-4 rounded-xl flex flex-col items-center justify-center md:min-w-[120px]">
+                    <span id="days" class="text-xl md:text-5xl font-bold text-brand-yellow font-mono">00</span>
+                    <span
+                        class="text-[10px] md:text-sm text-brand-lightblue uppercase tracking-widest mt-1 md:mt-2">Days</span>
                 </div>
                 <!-- Hours -->
                 <div
-                    class="glass-panel p-4 rounded-xl flex flex-col items-center justify-center min-w-[100px] md:min-w-[120px]">
-                    <span id="hours" class="text-3xl md:text-5xl font-bold text-brand-cream font-mono">00</span>
-                    <span class="text-xs md:text-sm text-brand-lightblue uppercase tracking-widest mt-2">Hours</span>
+                    class="glass-panel p-2 md:p-4 rounded-xl flex flex-col items-center justify-center md:min-w-[120px]">
+                    <span id="hours" class="text-xl md:text-5xl font-bold text-brand-cream font-mono">00</span>
+                    <span
+                        class="text-[10px] md:text-sm text-brand-lightblue uppercase tracking-widest mt-1 md:mt-2">Hours</span>
                 </div>
                 <!-- Minutes -->
                 <div
-                    class="glass-panel p-4 rounded-xl flex flex-col items-center justify-center min-w-[100px] md:min-w-[120px]">
-                    <span id="minutes" class="text-3xl md:text-5xl font-bold text-brand-cream font-mono">00</span>
-                    <span class="text-xs md:text-sm text-brand-lightblue uppercase tracking-widest mt-2">Minutes</span>
+                    class="glass-panel p-2 md:p-4 rounded-xl flex flex-col items-center justify-center md:min-w-[120px]">
+                    <span id="minutes" class="text-xl md:text-5xl font-bold text-brand-cream font-mono">00</span>
+                    <span
+                        class="text-[10px] md:text-sm text-brand-lightblue uppercase tracking-widest mt-1 md:mt-2">Mins</span>
                 </div>
                 <!-- Seconds -->
                 <div
-                    class="glass-panel p-4 rounded-xl flex flex-col items-center justify-center min-w-[100px] md:min-w-[120px]">
-                    <span id="seconds" class="text-3xl md:text-5xl font-bold text-brand-yellow font-mono">00</span>
-                    <span class="text-xs md:text-sm text-brand-lightblue uppercase tracking-widest mt-2">Seconds</span>
+                    class="glass-panel p-2 md:p-4 rounded-xl flex flex-col items-center justify-center md:min-w-[120px]">
+                    <span id="seconds" class="text-xl md:text-5xl font-bold text-brand-cream font-mono">00</span>
+                    <span
+                        class="text-[10px] md:text-sm text-brand-lightblue uppercase tracking-widest mt-1 md:mt-2">Secs</span>
                 </div>
             </div>
+
 
             <script>
                 // Countdown Logic
@@ -410,475 +420,537 @@
                             Today's dynamic world is undergoing a profound revolution driven by digitalisation and AI.
                             This summit is designed to foster interactions and critically evaluate the possibilities of
                             evolution in leadership by 2030. It seeks to identify the essential skills required by
-                            future leaders to explore strategies in cultivating these competencies.
                         </p>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Events Section -->
-        <!-- Events Section -->
-        <section id="events" class="relative">
-            <div id="events-pin-wrapper"
-                class="w-full h-screen overflow-hidden flex flex-col justify-center items-center relative py-12">
-                <div class="relative w-full text-center z-10 mb-8 md:mb-12 shrink-0">
-                    <h2 class="text-4xl md:text-4xl font-bold text-center text-brand-cream">What's waiting for you?</h2>
-                    <p class="text-brand-lightblue mt-4">Scroll to explore</p>
+            </div>
+    </div> <!-- Close container -->
+
+    <!-- Sponsors Section (Full Width) -->
+    <div class="mt-24 text-center w-full">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12 text-brand-cream">Our Sponsors</h2>
+
+        <div class="relative w-full overflow-hidden max-w-6xl mx-auto py-8">
+            <!-- Scrolling Track -->
+            <div
+                class="flex animate-[scroll_60s_linear_infinite] md:animate-scroll w-[600%] md:w-[200%] hover:pause-animation">
+                <!-- Logo Set 1 -->
+                <div class="flex w-1/2 justify-around items-center gap-4 md:gap-8 px-4 md:px-8">
+                    <div class="glass-panel p-2 md:p-4 rounded-xl hover:bg-brand-yellow/10 transition-colors">
+                        <img src="https://i.postimg.cc/htz3MGqk/open-ai.png" alt="Sponsor 1"
+                            class="h-8 md:h-12 w-auto opacity-70 hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="glass-panel p-2 md:p-4 rounded-xl hover:bg-brand-yellow/10 transition-colors">
+                        <img src="https://i.postimg.cc/htz3MGqk/open-ai.png" alt="Sponsor 2"
+                            class="h-8 md:h-12 w-auto opacity-70 hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="glass-panel p-2 md:p-4 rounded-xl hover:bg-brand-yellow/10 transition-colors">
+                        <img src="https://i.postimg.cc/htz3MGqk/open-ai.png" alt="Sponsor 3"
+                            class="h-8 md:h-12 w-auto opacity-70 hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="glass-panel p-2 md:p-4 rounded-xl hover:bg-brand-yellow/10 transition-colors">
+                        <img src="https://i.postimg.cc/htz3MGqk/open-ai.png" alt="Sponsor 4"
+                            class="h-8 md:h-12 w-auto opacity-70 hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="glass-panel p-2 md:p-4 rounded-xl hover:bg-brand-yellow/10 transition-colors">
+                        <img src=" https://i.postimg.cc/htz3MGqk/open-ai.png" alt="Sponsor 5"
+                            class="h-8 md:h-12 w-auto opacity-70 hover:opacity-100 transition-opacity">
+                    </div>
                 </div>
 
-                <!-- Cards Container -->
-                <div id="events-cards-stack"
-                    class="relative w-full max-w-6xl h-[55vh] md:h-[65vh] flex items-center justify-center shrink-0">
-
-                    <!-- Card 1: Broadcast / Panel -->
-                    <div
-                        class="event-card absolute top-0 left-0 w-full h-full bg-[#0a0f18] rounded-3xl overflow-hidden shadow-2xl border border-brand-blue/30 transform origin-center">
-                        <div
-                            class="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(48,87,146,0.25),transparent_60%)]">
-                        </div>
-                        <!-- Decorative diagonal stripe -->
-                        <div class="absolute -right-20 -top-20 w-96 h-96 bg-brand-yellow/5 rounded-full blur-3xl"></div>
-
-                        <div class="relative z-10 w-full h-full flex flex-col md:flex-row">
-                            <!-- Left: Big Text -->
-                            <div
-                                class="w-full md:w-1/2 p-10 flex flex-col justify-between border-b md:border-b-0 md:border-r border-white/10">
-                                <div>
-                                    <div class="flex items-center gap-2 mb-4">
-                                        <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
-                                        <span
-                                            class="text-xs tracking-[0.3em] uppercase text-brand-greyblue font-bold">Live
-                                            Session</span>
-                                    </div>
-                                    <h3
-                                        class="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-brand-cream to-brand-greyblue leading-[0.9]">
-                                        PANEL<br>TALKS
-                                    </h3>
-                                </div>
-                                <div class="hidden md:block">
-                                    <i
-                                        class="fas fa-microphone-alt text-8xl text-brand-darkblue/30 absolute bottom-10 left-10"></i>
-                                </div>
-                            </div>
-                            <!-- Right: Content -->
-                            <div class="w-full md:w-1/2 p-10 flex flex-col justify-center">
-                                <h4
-                                    class="text-2xl text-brand-yellow font-bold mb-6 font-mono border-l-4 border-brand-yellow pl-4">
-                                    Future of Leadership</h4>
-                                <p class="text-xl text-brand-lightblue leading-relaxed">
-                                    Engage deeply with industry titans. Unfiltered conversations about technology,
-                                    ethics, and sustainable growth in a rapidly evolving world.
-                                </p>
-                                <div class="mt-8 flex gap-3">
-                                    <span
-                                        class="px-4 py-1 rounded-full border border-white/20 text-sm text-brand-greyblue">Tech</span>
-                                    <span
-                                        class="px-4 py-1 rounded-full border border-white/20 text-sm text-brand-greyblue">Policy</span>
-                                    <span
-                                        class="px-4 py-1 rounded-full border border-white/20 text-sm text-brand-greyblue">Growth</span>
-                                </div>
-                            </div>
-                        </div>
+                <!-- Logo Set 2 -->
+                <div class="flex w-1/2 justify-around items-center gap-4 md:gap-8 px-4 md:px-8">
+                    <div class="glass-panel p-2 md:p-4 rounded-xl hover:bg-brand-yellow/10 transition-colors">
+                        <img src="https://i.postimg.cc/htz3MGqk/open-ai.png" alt="Sponsor 1"
+                            class="h-8 md:h-12 w-auto opacity-70 hover:opacity-100 transition-opacity">
                     </div>
-
-                    <!-- Card 2: Blueprint / Workshops -->
-                    <div
-                        class="event-card absolute top-0 left-0 w-full h-full bg-[#111111] rounded-3xl overflow-hidden shadow-2xl border border-brand-greyblue/20 transform origin-center">
-                        <!-- Grid Background -->
-                        <div class="absolute inset-0 opacity-10"
-                            style="background-image: linear-gradient(#305792 1px, transparent 1px), linear-gradient(90deg, #305792 1px, transparent 1px); background-size: 40px 40px;">
-                        </div>
-
-                        <div
-                            class="relative z-10 w-full h-full p-8 md:p-14 flex flex-col justify-center items-center text-center">
-                            <div
-                                class="absolute top-0 w-full h-1 bg-gradient-to-r from-brand-yellow via-brand-blue to-brand-yellow">
-                            </div>
-
-                            <h3 class="text-5xl md:text-7xl font-bold tracking-tighter text-white mb-2 uppercase">
-                                Workshop<span class="text-brand-yellow">.ISO</span></h3>
-                            <p class="font-mono text-brand-greyblue mb-10 tracking-widest text-sm">///
-                                SKILL_ACQUISITION_PROTOCOL_V2.0</p>
-
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-3xl text-left">
-                                <div class="bg-white/5 p-6 border-l-2 border-brand-yellow">
-                                    <h5 class="text-brand-cream font-bold mb-2 flex items-center gap-2"><i
-                                            class="fas fa-code text-brand-yellow"></i> Technical</h5>
-                                    <p class="text-sm text-brand-lightblue">Master frameworks essential for 2025.
-                                        Hands-on coding & strategy.</p>
-                                </div>
-                                <div class="bg-white/5 p-6 border-l-2 border-brand-blue">
-                                    <h5 class="text-brand-cream font-bold mb-2 flex items-center gap-2"><i
-                                            class="fas fa-users-cog text-brand-blue"></i> Management</h5>
-                                    <p class="text-sm text-brand-lightblue">Agile workflows and team dynamics
-                                        simulation.</p>
-                                </div>
-                            </div>
-
-                            <div class="absolute bottom-10 right-10 font-mono text-6xl opacity-10 text-white font-bold">
-                                02</div>
-                        </div>
+                    <div class="glass-panel p-2 md:p-4 rounded-xl hover:bg-brand-yellow/10 transition-colors">
+                        <img src="https://i.postimg.cc/htz3MGqk/open-ai.png" alt="Sponsor 2"
+                            class="h-8 md:h-12 w-auto opacity-70 hover:opacity-100 transition-opacity">
                     </div>
-
-                    <!-- Card 3: Luxury / Leader Library -->
-                    <div
-                        class="event-card absolute top-0 left-0 w-full h-full bg-[#050505] rounded-3xl overflow-hidden shadow-2xl border border-brand-yellow/20 transform origin-center flex flex-col">
-                        <div class="absolute inset-0 bg-gradient-to-b from-brand-yellow/5 to-transparent"></div>
-
-                        <div class="relative z-10 flex-1 flex flex-col items-center justify-center p-10 text-center">
-                            <i class="fas fa-crown text-4xl text-brand-yellow mb-8 opacity-80"></i>
-                            <h3 class="text-5xl md:text-7xl font-serif italic text-brand-cream mb-6">The Leader Library
-                            </h3>
-                            <div class="w-16 h-[1px] bg-brand-yellow mb-6"></div>
-                            <p class="text-xl md:text-2xl text-brand-lightblue max-w-xl font-light">
-                                "A curated environment for the chosen few."
-                            </p>
-                        </div>
-
-                        <div
-                            class="relative z-10 bg-white/5 backdrop-blur-md p-6 flex justify-between items-center border-t border-white/10">
-                            <span class="text-brand-yellow uppercase tracking-widest text-xs font-bold">Networking
-                                Only</span>
-                            <span class="text-brand-greyblue font-serif italic">Invite Only</span>
-                        </div>
+                    <div class="glass-panel p-2 md:p-4 rounded-xl hover:bg-brand-yellow/10 transition-colors">
+                        <img src="https://i.postimg.cc/htz3MGqk/open-ai.png" alt="Sponsor 3"
+                            class="h-8 md:h-12 w-auto opacity-70 hover:opacity-100 transition-opacity">
                     </div>
+                    <div class="glass-panel p-2 md:p-4 rounded-xl hover:bg-brand-yellow/10 transition-colors">
+                        <img src="https://i.postimg.cc/htz3MGqk/open-ai.png" alt="Sponsor 4"
+                            class="h-8 md:h-12 w-auto opacity-70 hover:opacity-100 transition-opacity">
+                    </div>
+                    <div class="glass-panel p-2 md:p-4 rounded-xl hover:bg-brand-yellow/10 transition-colors">
+                        <img src=" https://i.postimg.cc/htz3MGqk/open-ai.png" alt="Sponsor 5"
+                            class="h-8 md:h-12 w-auto opacity-70 hover:opacity-100 transition-opacity">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </section>
 
-                    <!-- Card 4: Intimate / Fireside -->
-                    <div class="event-card absolute top-0 left-0 w-full h-full bg-[#1a0f0f] rounded-3xl overflow-hidden shadow-2xl border-none transform origin-center"
-                        style="-webkit-mask-image: -webkit-radial-gradient(white, black); mask-image: radial-gradient(white, black);">
-                        <!-- Warm Spotlights -->
-                        <div
-                            class="absolute -left-20 top-0 w-[500px] h-[500px] bg-orange-900/40 blur-[100px] rounded-full mix-blend-screen">
-                        </div>
-                        <div
-                            class="absolute -right-20 bottom-0 w-[500px] h-[500px] bg-brand-yellow/20 blur-[100px] rounded-full mix-blend-screen">
-                        </div>
+    <!-- Events Section -->
+    <!-- Events Section -->
+    <section id="events" class="relative">
+        <div id="events-pin-wrapper"
+            class="w-full h-screen overflow-hidden flex flex-col justify-center items-center relative py-12">
+            <div class="relative w-full text-center z-10 mb-8 md:mb-12 shrink-0">
+                <h2 class="text-4xl md:text-4xl font-bold text-center text-brand-cream">What's waiting for you?</h2>
+                <p class="text-brand-lightblue mt-4">Scroll to explore</p>
+            </div>
 
+            <!-- Cards Container -->
+            <div id="events-cards-stack"
+                class="relative w-full max-w-6xl h-[55vh] md:h-[65vh] flex items-center justify-center shrink-0">
+
+                <!-- Card 1: Broadcast / Panel -->
+                <div
+                    class="event-card absolute top-0 left-0 w-full h-full bg-[#0a0f18] rounded-3xl overflow-hidden shadow-2xl border border-brand-blue/30 transform origin-center">
+                    <div
+                        class="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(48,87,146,0.25),transparent_60%)]">
+                    </div>
+                    <!-- Decorative diagonal stripe -->
+                    <div class="absolute -right-20 -top-20 w-96 h-96 bg-brand-yellow/5 rounded-full blur-3xl"></div>
+
+                    <div class="relative z-10 w-full h-full flex flex-col md:flex-row">
+                        <!-- Left: Big Text -->
                         <div
-                            class="relative z-10 w-full h-full flex flex-col justify-center items-center p-10 text-center">
-                            <div class="mb-8 relative">
-                                <i
-                                    class="fas fa-quote-left text-6xl text-brand-yellow opacity-20 absolute -top-8 -left-12"></i>
-                                <h3 class="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter">
-                                    Fireside<br><span
-                                        class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-200">Chats</span>
+                            class="w-full md:w-1/2 p-10 flex flex-col justify-between border-b md:border-b-0 md:border-r border-white/10">
+                            <div>
+                                <div class="flex items-center gap-2 mb-4">
+                                    <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                                    <span class="text-xs tracking-[0.3em] uppercase text-brand-greyblue font-bold">Live
+                                        Session</span>
+                                </div>
+                                <h3
+                                    class="text-4xl sm:text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-brand-cream to-brand-greyblue leading-[0.9]">
+                                    PANEL<br>TALKS
                                 </h3>
                             </div>
-
-                            <p class="text-2xl text-brand-cream/80 max-w-2xl font-medium mb-12">
-                                Intimate stories of resilience. <br>
-                                <span class="text-brand-greyblue text-lg block mt-2 font-normal">No scripts. Just raw,
-                                    honest conversations with changemakers.</span>
+                            <div class="hidden md:block">
+                                <i
+                                    class="fas fa-microphone-alt text-8xl text-brand-darkblue/30 absolute bottom-10 left-10"></i>
+                            </div>
+                        </div>
+                        <!-- Right: Content -->
+                        <div class="w-full md:w-1/2 p-10 flex flex-col justify-center">
+                            <h4
+                                class="text-2xl text-brand-yellow font-bold mb-6 font-mono border-l-4 border-brand-yellow pl-4">
+                                Future of Leadership</h4>
+                            <p class="text-xl text-brand-lightblue leading-relaxed">
+                                Engage deeply with industry titans. Unfiltered conversations about technology,
+                                ethics, and sustainable growth in a rapidly evolving world.
                             </p>
-
-                            <button
-                                class="group relative px-10 py-4 overflow-hidden rounded-full bg-orange-500/20 border border-orange-500/50 text-orange-100 font-bold uppercase tracking-wider transition-all hover:bg-orange-500 hover:text-white hover:scale-105">
-                                <span class="relative z-10">Reserve Seat</span>
-                                <div
-                                    class="absolute inset-0 h-full w-full bg-gradient-to-r from-orange-400 to-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                </div>
-                            </button>
+                            <div class="mt-8 flex gap-3">
+                                <span
+                                    class="px-4 py-1 rounded-full border border-white/20 text-sm text-brand-greyblue">Tech</span>
+                                <span
+                                    class="px-4 py-1 rounded-full border border-white/20 text-sm text-brand-greyblue">Policy</span>
+                                <span
+                                    class="px-4 py-1 rounded-full border border-white/20 text-sm text-brand-greyblue">Growth</span>
+                            </div>
                         </div>
                     </div>
-
                 </div>
-            </div>
-        </section>
 
-        <!-- Pricing Section -->
-        <section id="pricing" class="relative isolate py-24 sm:py-32 bg-transparent text-white">
-            <!-- Background Blur -->
-            <div aria-hidden="true"
-                class="absolute inset-x-0 -top-3 -z-10 transform-gpu overflow-hidden px-36 blur-3xl">
-                <div style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
-                    class="mx-auto aspect-[1155/678] w-[72rem] bg-gradient-to-tr from-brand-greyblue to-brand-blue opacity-20">
+                <!-- Card 2: Blueprint / Workshops -->
+                <div
+                    class="event-card absolute top-0 left-0 w-full h-full bg-[#111111] rounded-3xl overflow-hidden shadow-2xl border border-brand-greyblue/20 transform origin-center">
+                    <!-- Grid Background -->
+                    <div class="absolute inset-0 opacity-10"
+                        style="background-image: linear-gradient(#305792 1px, transparent 1px), linear-gradient(90deg, #305792 1px, transparent 1px); background-size: 40px 40px;">
+                    </div>
+
+                    <div
+                        class="relative z-10 w-full h-full p-6 md:p-14 flex flex-col justify-center items-center text-center">
+                        <div
+                            class="absolute top-0 w-full h-1 bg-gradient-to-r from-brand-yellow via-brand-blue to-brand-yellow">
+                        </div>
+
+                        <h3
+                            class="text-3xl sm:text-5xl md:text-7xl font-bold tracking-tighter text-white mb-2 uppercase">
+                            Workshop<span class="text-brand-yellow">.ISO</span></h3>
+                        <p class="font-mono text-brand-greyblue mb-10 tracking-widest text-xs md:text-sm">///
+                            SKILL_ACQUISITION_PROTOCOL_V2.0</p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-3xl text-left">
+                            <div class="bg-white/5 p-6 border-l-2 border-brand-yellow">
+                                <h5 class="text-brand-cream font-bold mb-2 flex items-center gap-2"><i
+                                        class="fas fa-code text-brand-yellow"></i> Technical</h5>
+                                <p class="text-sm text-brand-lightblue">Master frameworks essential for 2025.
+                                    Hands-on coding & strategy.</p>
+                            </div>
+                            <div class="bg-white/5 p-6 border-l-2 border-brand-blue">
+                                <h5 class="text-brand-cream font-bold mb-2 flex items-center gap-2"><i
+                                        class="fas fa-users-cog text-brand-blue"></i> Management</h5>
+                                <p class="text-sm text-brand-lightblue">Agile workflows and team dynamics
+                                    simulation.</p>
+                            </div>
+                        </div>
+
+                        <div class="absolute bottom-10 right-10 font-mono text-6xl opacity-10 text-white font-bold">
+                            02</div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="mx-auto max-w-4xl text-center px-6">
-                <h2 class="text-base/7 font-semibold text-brand-yellow">Registration</h2>
-                <p class="mt-2 text-5xl font-semibold tracking-tight text-brand-cream sm:text-6xl">Choose the right
-                    category</p>
-            </div>
-            <p class="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-brand-lightblue sm:text-xl/8 px-6">
-                Select the
-                plan that fits you best. Early bird offers and group discounts available.</p>
+                <!-- Card 3: Luxury / Leader Library -->
+                <div
+                    class="event-card absolute top-0 left-0 w-full h-full bg-[#050505] rounded-3xl overflow-hidden shadow-2xl border border-brand-yellow/20 transform origin-center flex flex-col">
+                    <div class="absolute inset-0 bg-gradient-to-b from-brand-yellow/5 to-transparent"></div>
 
+                    <div class="relative z-10 flex-1 flex flex-col items-center justify-center p-10 text-center">
+                        <i class="fas fa-crown text-4xl text-brand-yellow mb-8 opacity-80"></i>
+                        <h3 class="text-3xl sm:text-5xl md:text-7xl font-serif italic text-brand-cream mb-6">The Leader
+                            Library
+                        </h3>
+                        <div class="w-16 h-[1px] bg-brand-yellow mb-6"></div>
+                        <p class="text-xl md:text-2xl text-brand-lightblue max-w-xl font-light">
+                            "A curated environment for the chosen few."
+                        </p>
+                    </div>
+
+                    <div
+                        class="relative z-10 bg-white/5 backdrop-blur-md p-6 flex justify-between items-center border-t border-white/10">
+                        <span class="text-brand-yellow uppercase tracking-widest text-xs font-bold">Networking
+                            Only</span>
+                        <span class="text-brand-greyblue font-serif italic">Invite Only</span>
+                    </div>
+                </div>
+
+                <!-- Card 4: Intimate / Fireside -->
+                <div class="event-card absolute top-0 left-0 w-full h-full bg-[#1a0f0f] rounded-3xl overflow-hidden shadow-2xl border-none transform origin-center"
+                    style="-webkit-mask-image: -webkit-radial-gradient(white, black); mask-image: radial-gradient(white, black);">
+                    <!-- Warm Spotlights -->
+                    <div
+                        class="absolute -left-20 top-0 w-[500px] h-[500px] bg-orange-900/40 blur-[100px] rounded-full mix-blend-screen">
+                    </div>
+                    <div
+                        class="absolute -right-20 bottom-0 w-[500px] h-[500px] bg-brand-yellow/20 blur-[100px] rounded-full mix-blend-screen">
+                    </div>
+
+                    <div
+                        class="relative z-10 w-full h-full flex flex-col justify-center items-center p-6 md:p-10 text-center">
+                        <div class="mb-8 relative">
+                            <i
+                                class="fas fa-quote-left text-6xl text-brand-yellow opacity-20 absolute -top-8 -left-12"></i>
+                            <h3
+                                class="text-4xl sm:text-6xl md:text-8xl font-black text-white uppercase tracking-tighter">
+                                Fireside<br><span
+                                    class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-200">Chats</span>
+                            </h3>
+                        </div>
+
+                        <p class="text-2xl text-brand-cream/80 max-w-2xl font-medium mb-12">
+                            Intimate stories of resilience. <br>
+                            <span class="text-brand-greyblue text-lg block mt-2 font-normal">No scripts. Just raw,
+                                honest conversations with changemakers.</span>
+                        </p>
+
+                        <button
+                            class="group relative px-10 py-4 overflow-hidden rounded-full bg-orange-500/20 border border-orange-500/50 text-orange-100 font-bold uppercase tracking-wider transition-all hover:bg-orange-500 hover:text-white hover:scale-105">
+                            <span class="relative z-10">Reserve Seat</span>
+                            <div
+                                class="absolute inset-0 h-full w-full bg-gradient-to-r from-orange-400 to-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="relative isolate py-24 sm:py-32 bg-transparent text-white">
+        <!-- Background Blur -->
+        <div aria-hidden="true" class="absolute inset-x-0 -top-3 -z-10 transform-gpu overflow-hidden px-36 blur-3xl">
+            <div style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
+                class="mx-auto aspect-[1155/678] w-[72rem] bg-gradient-to-tr from-brand-greyblue to-brand-blue opacity-20">
+            </div>
+        </div>
+
+        <div class="mx-auto max-w-4xl text-center px-6">
+            <h2 class="text-base/7 font-semibold text-brand-yellow">Registration</h2>
+            <p class="mt-2 text-5xl font-semibold tracking-tight text-brand-cream sm:text-6xl">Choose the right
+                category</p>
+        </div>
+        <p class="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-brand-lightblue sm:text-xl/8 px-6">
+            Select the
+            plan that fits you best. Early bird offers and group discounts available.</p>
+
+        <div
+            class="mx-auto mt-16 grid max-w-lg grid-cols-1 gap-y-6 sm:mt-20 sm:gap-y-0 lg:max-w-5xl lg:grid-cols-2 lg:gap-x-8 px-6">
+
+            <!-- Card 1: Individual -->
             <div
-                class="mx-auto mt-16 grid max-w-lg grid-cols-1 gap-y-6 sm:mt-20 sm:gap-y-0 lg:max-w-5xl lg:grid-cols-2 lg:gap-x-8 px-6">
-
-                <!-- Card 1: Individual -->
-                <div
-                    class="rounded-3xl glass-panel p-8 ring-1 ring-brand-greyblue/30 sm:p-10 flex flex-col gap-8 h-full hover:ring-brand-yellow/50 transition-all">
-                    <h3 id="tier-individual" class="text-base/7 font-semibold text-brand-yellow">YPR</h3>
-                    <p class="mt-4 flex items-baseline gap-x-2">
-                        <span class="text-5xl font-semibold tracking-tight text-brand-cream">₹399</span>
-                        <span class="text-base text-brand-lightblue">/ person</span>
-                    </p>
-                    <p class="mt-6 text-base/7 text-brand-lightblue">For students and professionals attending solo.</p>
-                    <ul role="list" class="mt-8 space-y-3 text-sm/6 text-brand-lightblue sm:mt-10 flex-1">
-                        <li class="flex gap-x-3"><i class="fas fa-check text-brand-yellow h-6 w-5 flex-none"></i> Early
-                            Bird:
-                            ₹549</li>
-                        <li class="flex gap-x-3"><i class="fas fa-check text-brand-yellow h-6 w-5 flex-none"></i>
-                            Regular
-                            Pass: ₹749</li>
-                        <li class="flex gap-x-3"><i class="fas fa-check text-brand-yellow h-6 w-5 flex-none"></i> Full
-                            Summit
-                            Access</li>
-                        <li class="flex gap-x-3"><i class="fas fa-check text-brand-yellow h-6 w-5 flex-none"></i>
-                            Workshop
-                            Participation</li>
-                    </ul>
-                    <a href="submission.html" aria-describedby="tier-individual"
-                        class="block rounded-md px-3.5 py-2.5 text-center text-sm font-semibold bg-brand-yellow text-brand-darkblue hover:bg-brand-cream focus-visible:outline-2 focus-visible:outline-offset-2 sm:mt-10 transition-all mt-auto shadow-lg hover:shadow-brand-yellow/20">Register
-                        Now</a>
-                </div>
+                class="rounded-3xl glass-panel p-8 ring-1 ring-brand-greyblue/30 sm:p-10 flex flex-col gap-8 h-full hover:ring-brand-yellow/50 transition-all">
+                <h3 id="tier-individual" class="text-base/7 font-semibold text-brand-yellow">YPR</h3>
+                <p class="mt-4 flex items-baseline gap-x-2">
+                    <span class="text-5xl font-semibold tracking-tight text-brand-cream">₹399</span>
+                    <span class="text-base text-brand-lightblue">/ person</span>
+                </p>
+                <p class="mt-6 text-base/7 text-brand-lightblue">For students and professionals attending solo.</p>
+                <ul role="list" class="mt-8 space-y-3 text-sm/6 text-brand-lightblue sm:mt-10 flex-1">
+                    <li class="flex gap-x-3"><i class="fas fa-check text-brand-yellow h-6 w-5 flex-none"></i> Early
+                        Bird:
+                        ₹549</li>
+                    <li class="flex gap-x-3"><i class="fas fa-check text-brand-yellow h-6 w-5 flex-none"></i>
+                        Regular
+                        Pass: ₹749</li>
+                    <li class="flex gap-x-3"><i class="fas fa-check text-brand-yellow h-6 w-5 flex-none"></i> Full
+                        Summit
+                        Access</li>
+                    <li class="flex gap-x-3"><i class="fas fa-check text-brand-yellow h-6 w-5 flex-none"></i>
+                        Workshop
+                        Participation</li>
+                </ul>
+                <a href="submission.html" aria-describedby="tier-individual"
+                    class="block rounded-md px-3.5 py-2.5 text-center text-sm font-semibold bg-brand-yellow text-brand-darkblue hover:bg-brand-cream focus-visible:outline-2 focus-visible:outline-offset-2 sm:mt-10 transition-all mt-auto shadow-lg hover:shadow-brand-yellow/20">Register
+                    Now</a>
+            </div>
 
 
 
-                <!-- Card 3: Group Packages -->
-                <div
-                    class="rounded-3xl glass-panel p-8 ring-1 ring-brand-greyblue/30 sm:p-10 flex flex-col gap-8 h-full hover:ring-brand-yellow/50 transition-all">
-                    <h3 id="tier-group" class="text-base/7 font-semibold text-brand-
+            <!-- Card 3: Group Packages -->
+            <div
+                class="rounded-3xl glass-panel p-8 ring-1 ring-brand-greyblue/30 sm:p-10 flex flex-col gap-8 h-full hover:ring-brand-yellow/50 transition-all">
+                <h3 id="tier-group" class="text-base/7 font-semibold text-brand-
                     yellow">Other Campuses</h3>
-                    <p class="mt-4 flex items-baseline gap-x-2">
-                        <span class="text-5xl font-semibold tracking-tight text-brand-cream">₹499</span>
-                        <span class="text-base text-brand-lightblue">/ person</span>
-                    </p>
-                    <p class="mt-6 text-base/7 text-brand-lightblue">Best value for squads and delegations.</p>
-                    <ul role="list" class="mt-8 space-y-3 text-sm/6 text-brand-lightblue sm:mt-10 flex-1">
-                        <li class="flex gap-x-3"><i class="fas fa-check text-brand-yellow h-6 w-5 flex-none"></i> Christ
-                            Group
-                            (3): ₹2000</li>
-                        <li class="flex gap-x-3"><i class="fas fa-check text-brand-yellow h-6 w-5 flex-none"></i> Christ
-                            Group
-                            (5): ₹3450</li>
-                        <li class="flex gap-x-3"><i class="fas fa-check text-brand-yellow h-6 w-5 flex-none"></i>
-                            External
-                            Group (3): ₹2250</li>
-                        <li class="flex gap-x-3"><i class="fas fa-check text-brand-yellow h-6 w-5 flex-none"></i>
-                            External
-                            Group (5): ₹3750</li>
-                    </ul>
-                    <a href="submission.html" aria-describedby="tier-group"
-                        class="block rounded-md px-3.5 py-2.5 text-center text-sm font-semibold bg-brand-yellow text-brand-darkblue hover:bg-brand-cream focus-visible:outline-2 focus-visible:outline-offset-2 sm:mt-10 transition-all mt-auto shadow-lg hover:shadow-brand-yellow/20">Get
-                        Group Pass</a>
-                </div>
-
+                <p class="mt-4 flex items-baseline gap-x-2">
+                    <span class="text-5xl font-semibold tracking-tight text-brand-cream">₹499</span>
+                    <span class="text-base text-brand-lightblue">/ person</span>
+                </p>
+                <p class="mt-6 text-base/7 text-brand-lightblue">Best value for squads and delegations.</p>
+                <ul role="list" class="mt-8 space-y-3 text-sm/6 text-brand-lightblue sm:mt-10 flex-1">
+                    <li class="flex gap-x-3"><i class="fas fa-check text-brand-yellow h-6 w-5 flex-none"></i> Christ
+                        Group
+                        (3): ₹2000</li>
+                    <li class="flex gap-x-3"><i class="fas fa-check text-brand-yellow h-6 w-5 flex-none"></i> Christ
+                        Group
+                        (5): ₹3450</li>
+                    <li class="flex gap-x-3"><i class="fas fa-check text-brand-yellow h-6 w-5 flex-none"></i>
+                        External
+                        Group (3): ₹2250</li>
+                    <li class="flex gap-x-3"><i class="fas fa-check text-brand-yellow h-6 w-5 flex-none"></i>
+                        External
+                        Group (5): ₹3750</li>
+                </ul>
+                <a href="submission.html" aria-describedby="tier-group"
+                    class="block rounded-md px-3.5 py-2.5 text-center text-sm font-semibold bg-brand-yellow text-brand-darkblue hover:bg-brand-cream focus-visible:outline-2 focus-visible:outline-offset-2 sm:mt-10 transition-all mt-auto shadow-lg hover:shadow-brand-yellow/20">Get
+                    Group Pass</a>
             </div>
-        </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="py-24">
-            <div class="container mx-auto px-6">
-                <!-- Section Header -->
-                <div class="text-center mb-16">
-                    <h2 class="text-5xl md:text-6xl font-extrabold mb-8 text-brand-cream">Contact Details</h2>
-                    <a href="https://linktr.ee/capsity" target="_blank"
-                        class="inline-flex items-center gap-2 px-8 py-3 bg-brand-yellow/10 border border-brand-yellow/50 text-brand-yellow rounded-full font-bold text-lg hover:bg-brand-yellow hover:text-brand-darkblue transition-all duration-300 group">
-                        <span>View Brochures</span>
-                        <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
-                    </a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24">
+        <div class="container mx-auto px-6">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <h2 class="text-5xl md:text-6xl font-extrabold mb-8 text-brand-cream">Contact Details</h2>
+                <a href="https://linktr.ee/capsity" target="_blank"
+                    class="inline-flex items-center gap-2 px-8 py-3 bg-brand-yellow/10 border border-brand-yellow/50 text-brand-yellow rounded-full font-bold text-lg hover:bg-brand-yellow hover:text-brand-darkblue transition-all duration-300 group">
+                    <span>View Brochures</span>
+                    <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+
+            <div class="max-w-6xl mx-auto">
+                <!-- Faculty Coordinators -->
+                <div class="mb-20">
+                    <h3
+                        class="text-3xl font-bold mb-10 text-brand-cream text-center relative inline-block left-1/2 -translate-x-1/2">
+                        Faculty Coordinators
+                        <div
+                            class="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-blue to-transparent">
+                        </div>
+                    </h3>
+
+                    <div class="flex flex-wrap justify-center gap-6">
+                        <!-- Card 1 -->
+                        <div
+                            class="glass-panel p-6 rounded-xl text-center hover:border-brand-yellow/30 transition-all duration-300 hover:-translate-y-1 group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]">
+                            <div
+                                class="w-12 h-12 mx-auto bg-brand-blue/20 rounded-full flex items-center justify-center mb-4 text-brand-yellow">
+                                <i class="fas fa-chalkboard-teacher text-xl"></i>
+                            </div>
+                            <h4
+                                class="text-xl font-bold text-brand-cream mb-2 group-hover:text-brand-yellow transition-colors">
+                                Ms. Smitha Keeran Warrier</h4>
+                            <a href="mailto:smitha.keeran@christuniversity.in"
+                                class="text-sm text-brand-lightblue hover:text-brand-cream transition-colors break-all">smitha.keeran@christuniversity.in</a>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div
+                            class="glass-panel p-6 rounded-xl text-center hover:border-brand-yellow/30 transition-all duration-300 hover:-translate-y-1 group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]">
+                            <div
+                                class="w-12 h-12 mx-auto bg-brand-blue/20 rounded-full flex items-center justify-center mb-4 text-brand-yellow">
+                                <i class="fas fa-chalkboard-teacher text-xl"></i>
+                            </div>
+                            <h4
+                                class="text-xl font-bold text-brand-cream mb-2 group-hover:text-brand-yellow transition-colors">
+                                Dr. Divya Sundaram</h4>
+                            <a href="mailto:divya.sundaram@christuniversity.in"
+                                class="text-sm text-brand-lightblue hover:text-brand-cream transition-colors break-all">divya.sundaram@christuniversity.in</a>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div
+                            class="glass-panel p-6 rounded-xl text-center hover:border-brand-yellow/30 transition-all duration-300 hover:-translate-y-1 group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]">
+                            <div
+                                class="w-12 h-12 mx-auto bg-brand-blue/20 rounded-full flex items-center justify-center mb-4 text-brand-yellow">
+                                <i class="fas fa-chalkboard-teacher text-xl"></i>
+                            </div>
+                            <h4
+                                class="text-xl font-bold text-brand-cream mb-2 group-hover:text-brand-yellow transition-colors">
+                                Mr. Vijith Varghese</h4>
+                            <a href="mailto:vijith.varghese@christuniversity.in"
+                                class="text-sm text-brand-lightblue hover:text-brand-cream transition-colors break-all">vijith.varghese@christuniversity.in</a>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div
+                            class="glass-panel p-6 rounded-xl text-center hover:border-brand-yellow/30 transition-all duration-300 hover:-translate-y-1 group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]">
+                            <div
+                                class="w-12 h-12 mx-auto bg-brand-blue/20 rounded-full flex items-center justify-center mb-4 text-brand-yellow">
+                                <i class="fas fa-chalkboard-teacher text-xl"></i>
+                            </div>
+                            <h4
+                                class="text-xl font-bold text-brand-cream mb-2 group-hover:text-brand-yellow transition-colors">
+                                Dr. Ganesh Kumar J</h4>
+                            <a href="mailto:ganeshkumar.j@christuniversity.in"
+                                class="text-sm text-brand-lightblue hover:text-brand-cream transition-colors break-all">ganeshkumar.j@christuniversity.in</a>
+                        </div>
+                        <!-- Card 5 -->
+                        <div
+                            class="glass-panel p-6 rounded-xl text-center hover:border-brand-yellow/30 transition-all duration-300 hover:-translate-y-1 group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]">
+                            <div
+                                class="w-12 h-12 mx-auto bg-brand-blue/20 rounded-full flex items-center justify-center mb-4 text-brand-yellow">
+                                <i class="fas fa-chalkboard-teacher text-xl"></i>
+                            </div>
+                            <h4
+                                class="text-xl font-bold text-brand-cream mb-2 group-hover:text-brand-yellow transition-colors">
+                                Dr. Vijaya Margaret</h4>
+                            <a href="mailto:vijaya.margaret@christuniversity.in"
+                                class="text-sm text-brand-lightblue hover:text-brand-cream transition-colors break-all">vijaya.margaret@christuniversity.in</a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="max-w-6xl mx-auto">
-                    <!-- Faculty Coordinators -->
-                    <div class="mb-20">
-                        <h3
-                            class="text-3xl font-bold mb-10 text-brand-cream text-center relative inline-block left-1/2 -translate-x-1/2">
-                            Faculty Coordinators
-                            <div
-                                class="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-blue to-transparent">
-                            </div>
-                        </h3>
+                <!-- Student Coordinators -->
+                <div>
+                    <h3
+                        class="text-3xl font-bold mb-10 text-brand-cream text-center relative inline-block left-1/2 -translate-x-1/2">
+                        Student Coordinators
+                        <div
+                            class="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-yellow to-transparent">
+                        </div>
+                    </h3>
 
-                        <div class="flex flex-wrap justify-center gap-6">
-                            <!-- Card 1 -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                        <!-- Student 1 -->
+                        <div
+                            class="glass-panel p-6 rounded-xl flex items-center gap-4 hover:bg-brand-blue/10 transition-colors">
                             <div
-                                class="glass-panel p-6 rounded-xl text-center hover:border-brand-yellow/30 transition-all duration-300 hover:-translate-y-1 group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]">
-                                <div
-                                    class="w-12 h-12 mx-auto bg-brand-blue/20 rounded-full flex items-center justify-center mb-4 text-brand-yellow">
-                                    <i class="fas fa-chalkboard-teacher text-xl"></i>
-                                </div>
-                                <h4
-                                    class="text-xl font-bold text-brand-cream mb-2 group-hover:text-brand-yellow transition-colors">
-                                    Ms. Smitha Keeran Warrier</h4>
-                                <a href="mailto:smitha.keeran@christuniversity.in"
-                                    class="text-sm text-brand-lightblue hover:text-brand-cream transition-colors break-all">smitha.keeran@christuniversity.in</a>
+                                class="w-10 h-10 rounded-full bg-brand-yellow/20 flex items-center justify-center text-brand-yellow flex-shrink-0">
+                                <i class="fas fa-user"></i>
                             </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-brand-cream">Mr. K Sourav</h4>
+                                <a href="tel:+918075885542"
+                                    class="text-brand-mono text-brand-greyblue hover:text-brand-yellow transition-colors font-mono">+91
+                                    80758 85542</a>
+                            </div>
+                        </div>
 
-                            <!-- Card 2 -->
+                        <!-- Student 2 -->
+                        <div
+                            class="glass-panel p-6 rounded-xl flex items-center gap-4 hover:bg-brand-blue/10 transition-colors">
                             <div
-                                class="glass-panel p-6 rounded-xl text-center hover:border-brand-yellow/30 transition-all duration-300 hover:-translate-y-1 group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]">
-                                <div
-                                    class="w-12 h-12 mx-auto bg-brand-blue/20 rounded-full flex items-center justify-center mb-4 text-brand-yellow">
-                                    <i class="fas fa-chalkboard-teacher text-xl"></i>
-                                </div>
-                                <h4
-                                    class="text-xl font-bold text-brand-cream mb-2 group-hover:text-brand-yellow transition-colors">
-                                    Dr. Divya Sundaram</h4>
-                                <a href="mailto:divya.sundaram@christuniversity.in"
-                                    class="text-sm text-brand-lightblue hover:text-brand-cream transition-colors break-all">divya.sundaram@christuniversity.in</a>
+                                class="w-10 h-10 rounded-full bg-brand-yellow/20 flex items-center justify-center text-brand-yellow flex-shrink-0">
+                                <i class="fas fa-user"></i>
                             </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-brand-cream">Ms. Khushi Srivastava</h4>
+                                <a href="tel:+919731021131"
+                                    class="text-brand-mono text-brand-greyblue hover:text-brand-yellow transition-colors font-mono">+91
+                                    97310 21131</a>
+                            </div>
+                        </div>
 
-                            <!-- Card 3 -->
+                        <!-- Student 3 -->
+                        <div
+                            class="glass-panel p-6 rounded-xl flex items-center gap-4 hover:bg-brand-blue/10 transition-colors">
                             <div
-                                class="glass-panel p-6 rounded-xl text-center hover:border-brand-yellow/30 transition-all duration-300 hover:-translate-y-1 group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]">
-                                <div
-                                    class="w-12 h-12 mx-auto bg-brand-blue/20 rounded-full flex items-center justify-center mb-4 text-brand-yellow">
-                                    <i class="fas fa-chalkboard-teacher text-xl"></i>
-                                </div>
-                                <h4
-                                    class="text-xl font-bold text-brand-cream mb-2 group-hover:text-brand-yellow transition-colors">
-                                    Mr. Vijith Varghese</h4>
-                                <a href="mailto:vijith.varghese@christuniversity.in"
-                                    class="text-sm text-brand-lightblue hover:text-brand-cream transition-colors break-all">vijith.varghese@christuniversity.in</a>
+                                class="w-10 h-10 rounded-full bg-brand-yellow/20 flex items-center justify-center text-brand-yellow flex-shrink-0">
+                                <i class="fas fa-user"></i>
                             </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-brand-cream">Ms. Angelina Alvares</h4>
+                                <a href="tel:+919100583284"
+                                    class="text-brand-mono text-brand-greyblue hover:text-brand-yellow transition-colors font-mono">+91
+                                    91005 83284</a>
+                            </div>
+                        </div>
 
-                            <!-- Card 4 -->
-                            <div
-                                class="glass-panel p-6 rounded-xl text-center hover:border-brand-yellow/30 transition-all duration-300 hover:-translate-y-1 group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]">
+                        <!-- Student 4 - Special Role -->
+                        <div
+                            class="glass-panel p-6 rounded-xl flex flex-col justify-center gap-1 hover:bg-brand-blue/10 transition-colors">
+                            <div class="flex items-center gap-4">
                                 <div
-                                    class="w-12 h-12 mx-auto bg-brand-blue/20 rounded-full flex items-center justify-center mb-4 text-brand-yellow">
-                                    <i class="fas fa-chalkboard-teacher text-xl"></i>
+                                    class="w-10 h-10 rounded-full bg-brand-yellow/20 flex items-center justify-center text-brand-yellow flex-shrink-0">
+                                    <i class="fas fa-star"></i>
                                 </div>
-                                <h4
-                                    class="text-xl font-bold text-brand-cream mb-2 group-hover:text-brand-yellow transition-colors">
-                                    Dr. Ganesh Kumar J</h4>
-                                <a href="mailto:ganeshkumar.j@christuniversity.in"
-                                    class="text-sm text-brand-lightblue hover:text-brand-cream transition-colors break-all">ganeshkumar.j@christuniversity.in</a>
+                                <div>
+                                    <h4 class="text-lg font-bold text-brand-cream">Ms. Mana Shah</h4>
+                                    <a href="tel:+919054346200"
+                                        class="text-brand-mono text-brand-greyblue hover:text-brand-yellow transition-colors font-mono">+91
+                                        90543 46200</a>
+                                </div>
                             </div>
-                            <!-- Card 5 -->
-                            <div
-                                class="glass-panel p-6 rounded-xl text-center hover:border-brand-yellow/30 transition-all duration-300 hover:-translate-y-1 group w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]">
+                            <div class="mt-2 ml-14">
+                                <span
+                                    class="text-xs px-2 py-1 rounded bg-brand-blue/30 text-brand-lightblue border border-brand-greyblue/20">National
+                                    Seminar</span>
+                            </div>
+                        </div>
+
+                        <!-- Student 5 - Special Role -->
+                        <div
+                            class="glass-panel p-6 rounded-xl flex flex-col justify-center gap-1 hover:bg-brand-blue/10 transition-colors md:col-span-2 md:w-1/2 md:mx-auto">
+                            <div class="flex items-center gap-4">
                                 <div
-                                    class="w-12 h-12 mx-auto bg-brand-blue/20 rounded-full flex items-center justify-center mb-4 text-brand-yellow">
-                                    <i class="fas fa-chalkboard-teacher text-xl"></i>
+                                    class="w-10 h-10 rounded-full bg-brand-yellow/20 flex items-center justify-center text-brand-yellow flex-shrink-0">
+                                    <i class="fas fa-star"></i>
                                 </div>
-                                <h4
-                                    class="text-xl font-bold text-brand-cream mb-2 group-hover:text-brand-yellow transition-colors">
-                                    Dr. Vijaya Margaret</h4>
-                                <a href="mailto:vijaya.margaret@christuniversity.in"
-                                    class="text-sm text-brand-lightblue hover:text-brand-cream transition-colors break-all">vijaya.margaret@christuniversity.in</a>
+                                <div>
+                                    <h4 class="text-lg font-bold text-brand-cream">Ms. Gayatri Pandey</h4>
+                                    <a href="tel:+918899942072"
+                                        class="text-brand-mono text-brand-greyblue hover:text-brand-yellow transition-colors font-mono">+91
+                                        88999 42072</a>
+                                </div>
+                            </div>
+                            <div class="mt-2 ml-14">
+                                <span
+                                    class="text-xs px-2 py-1 rounded bg-brand-blue/30 text-brand-lightblue border border-brand-greyblue/20">National
+                                    Seminar</span>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Student Coordinators -->
-                    <div>
-                        <h3
-                            class="text-3xl font-bold mb-10 text-brand-cream text-center relative inline-block left-1/2 -translate-x-1/2">
-                            Student Coordinators
-                            <div
-                                class="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-yellow to-transparent">
-                            </div>
-                        </h3>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                            <!-- Student 1 -->
-                            <div
-                                class="glass-panel p-6 rounded-xl flex items-center gap-4 hover:bg-brand-blue/10 transition-colors">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-brand-yellow/20 flex items-center justify-center text-brand-yellow flex-shrink-0">
-                                    <i class="fas fa-user"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-bold text-brand-cream">Mr. K Sourav</h4>
-                                    <a href="tel:+918075885542"
-                                        class="text-brand-mono text-brand-greyblue hover:text-brand-yellow transition-colors font-mono">+91
-                                        80758 85542</a>
-                                </div>
-                            </div>
-
-                            <!-- Student 2 -->
-                            <div
-                                class="glass-panel p-6 rounded-xl flex items-center gap-4 hover:bg-brand-blue/10 transition-colors">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-brand-yellow/20 flex items-center justify-center text-brand-yellow flex-shrink-0">
-                                    <i class="fas fa-user"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-bold text-brand-cream">Ms. Khushi Srivastava</h4>
-                                    <a href="tel:+919731021131"
-                                        class="text-brand-mono text-brand-greyblue hover:text-brand-yellow transition-colors font-mono">+91
-                                        97310 21131</a>
-                                </div>
-                            </div>
-
-                            <!-- Student 3 -->
-                            <div
-                                class="glass-panel p-6 rounded-xl flex items-center gap-4 hover:bg-brand-blue/10 transition-colors">
-                                <div
-                                    class="w-10 h-10 rounded-full bg-brand-yellow/20 flex items-center justify-center text-brand-yellow flex-shrink-0">
-                                    <i class="fas fa-user"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-bold text-brand-cream">Ms. Angelina Alvares</h4>
-                                    <a href="tel:+919100583284"
-                                        class="text-brand-mono text-brand-greyblue hover:text-brand-yellow transition-colors font-mono">+91
-                                        91005 83284</a>
-                                </div>
-                            </div>
-
-                            <!-- Student 4 - Special Role -->
-                            <div
-                                class="glass-panel p-6 rounded-xl flex flex-col justify-center gap-1 hover:bg-brand-blue/10 transition-colors">
-                                <div class="flex items-center gap-4">
-                                    <div
-                                        class="w-10 h-10 rounded-full bg-brand-yellow/20 flex items-center justify-center text-brand-yellow flex-shrink-0">
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="text-lg font-bold text-brand-cream">Ms. Mana Shah</h4>
-                                        <a href="tel:+919054346200"
-                                            class="text-brand-mono text-brand-greyblue hover:text-brand-yellow transition-colors font-mono">+91
-                                            90543 46200</a>
-                                    </div>
-                                </div>
-                                <div class="mt-2 ml-14">
-                                    <span
-                                        class="text-xs px-2 py-1 rounded bg-brand-blue/30 text-brand-lightblue border border-brand-greyblue/20">National
-                                        Seminar</span>
-                                </div>
-                            </div>
-
-                            <!-- Student 5 - Special Role -->
-                            <div
-                                class="glass-panel p-6 rounded-xl flex flex-col justify-center gap-1 hover:bg-brand-blue/10 transition-colors md:col-span-2 md:w-1/2 md:mx-auto">
-                                <div class="flex items-center gap-4">
-                                    <div
-                                        class="w-10 h-10 rounded-full bg-brand-yellow/20 flex items-center justify-center text-brand-yellow flex-shrink-0">
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="text-lg font-bold text-brand-cream">Ms. Gayatri Pandey</h4>
-                                        <a href="tel:+918899942072"
-                                            class="text-brand-mono text-brand-greyblue hover:text-brand-yellow transition-colors font-mono">+91
-                                            88999 42072</a>
-                                    </div>
-                                </div>
-                                <div class="mt-2 ml-14">
-                                    <span
-                                        class="text-xs px-2 py-1 rounded bg-brand-blue/30 text-brand-lightblue border border-brand-greyblue/20">National
-                                        Seminar</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-            </div>
-        </section>
 
-        <!-- Footer -->
-        <footer class="py-12 border-t border-brand-greyblue/20 text-center glass-panel">
-            <p class="text-brand-lightblue mb-2">© 2025 CAPSity Leadership Summit. All rights reserved.</p>
-            <p class="text-brand-greyblue text-sm uppercase tracking-wide">Knowledge Partners & Collaborators: IEEE |
-                CHRIST
-                University</p>
-        </footer>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-brand-greyblue/20 text-center glass-panel">
+        <p class="text-brand-lightblue mb-2">© 2025 CAPSity Leadership Summit. All rights reserved.</p>
+        <p class="text-brand-greyblue text-sm uppercase tracking-wide">Knowledge Partners & Collaborators: IEEE |
+            CHRIST
+            University</p>
+    </footer>
 
     </div>
 
