@@ -201,7 +201,7 @@
         <!-- Loading Bar -->
         <div class="w-48 md:w-64 h-1 bg-brand-greyblue/20 rounded-full overflow-hidden relative">
             <div class="absolute inset-0 bg-gradient-to-r from-brand-yellow via-brand-cream to-brand-blue w-0 animate-[loading_2s_ease-in-out_forwards]"
-                style="animation-delay: 3.5s;">
+                style="animation-delay: 0.5s;">
             </div>
         </div>
     </div>
@@ -989,13 +989,13 @@
                 webkitClipPath: "inset(0% 0 0 0)",
                 filter: "blur(0px)",
                 scale: 1,
-                duration: 3.5,
+                duration: 2.0,
                 ease: "power3.out"
             })
-                .to({}, { duration: 2.0 })
+                .to({}, { duration: 0.5 })
                 .to(loader, {
                     opacity: 0,
-                    duration: 1,
+                    duration: 0.5,
                     ease: "power2.inOut",
                     onComplete: () => {
                         loader.style.display = 'none';
