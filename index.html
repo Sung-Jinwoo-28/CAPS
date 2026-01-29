@@ -967,12 +967,15 @@
                 });
             });
 
+            const isMobile = window.innerWidth < 768;
+
             const tlEvents = gsap.timeline({
                 scrollTrigger: {
                     trigger: wrapper,
                     start: "top top",
-                    end: "+=300%", // Scroll distance (3 extra screens worth)
+                    end: isMobile ? "+=150%" : "+=300%",
                     pin: true,
+                    anticipatePin: 1,
                     scrub: 1, // Smooth scrolling
                     // markers: true // For debugging
                 }
