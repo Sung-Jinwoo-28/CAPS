@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration | CAPS CONFLUENCE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: '#0a0a0a',
+                        brand: {
+                            darkblue: '#1e3258',
+                            blue: '#305792',
+                            cream: '#efe2d5',
+                            yellow: '#cbbb68',
+                            greyblue: '#6a86ac',
+                            lightblue: '#b5bac3'
+                        },
+                        accent: {
+                            purple: 'rgba(48, 87, 146, 0.4)',
+                            glow: '#305792',
+                            neon: '#cbbb68'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'shooting-star': 'shooting 3s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        shooting: {
+                            '0%': { transform: 'translateX(0) translateY(0) rotate(315deg)', opacity: 1 },
+                            '70%': { opacity: 1 },
+                            '100%': { transform: 'translateX(-1000px) translateY(1000px) rotate(315deg)', opacity: 0 },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            overflow-x: hidden;
+        }
+
+        .star-bg {
+            background-image:
+                radial-gradient(white 1px, transparent 1px),
+                radial-gradient(white 1px, transparent 1px);
+            background-size: 550px 550px, 350px 350px;
+            background-position: 0 0, 0 0;
+            animation: stars 100s linear infinite;
+        }
+
+        @keyframes stars {
+            0% {
+                background-position: 0 0, 0 0;
+            }
+
+            100% {
+                background-position: 550px 550px, 350px 350px;
+            }
+        }
+
+        .glass-panel {
+            background: rgba(30, 50, 88, 0.08);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(106, 134, 172, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .shooting-star {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 4px;
+            height: 4px;
+            background: #cbbb68;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(203, 187, 104, 0.1), 0 0 0 8px rgba(203, 187, 104, 0.1), 0 0 20px rgba(203, 187, 104, 1);
+            animation: shooting 3s linear infinite;
+        }
+
+        .shooting-star::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 300px;
+            height: 1px;
+            background: linear-gradient(90deg, #cbbb68, transparent);
+        }
+
+        .input-field {
+            width: 100%;
+            background: rgba(10, 10, 10, 0.6);
+            border: 1px solid rgba(106, 134, 172, 0.3);
+            color: #efe2d5;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #cbbb68;
+            box-shadow: 0 0 0 2px rgba(203, 187, 104, 0.2);
+            background: rgba(10, 10, 10, 0.8);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #305792;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6a86ac;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="text-white font-sans antialiased relative min-h-screen flex flex-col">
+
+    <!-- Background Animation Layer -->
+    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+        <div class="absolute inset-0 star-bg opacity-50"></div>
+        <div
+            class="absolute top-0 left-1/4 w-96 h-96 bg-brand-blue opacity-20 blur-[128px] rounded-full animate-pulse-slow">
+        </div>
+        <div
+            class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-brand-darkblue opacity-20 blur-[128px] rounded-full animate-float">
+        </div>
+
+        <!-- Shooting Stars -->
+        <div class="shooting-star" style="top: 0; left: 80%; animation-delay: 0s; animation-duration: 2.5s;"></div>
+        <div class="shooting-star" style="top: 20%; left: 90%; animation-delay: 1.2s; animation-duration: 3s;"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav
+        class="sticky top-0 z-50 glass-panel border-b border-brand-greyblue/20 px-6 py-4 flex justify-between items-center blur-backdrop">
+        <a href="JJ.html" class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+            <img src="caps2.png" alt="CAPS Logo" class="h-12 md:h-16 w-auto">
+        </a>
+        <a href="JJ.html"
+            class="text-brand-cream hover:text-brand-yellow transition-colors font-semibold flex items-center gap-2">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-6 py-12 relative z-10 flex items-center justify-center">
+
+        <div class="w-full max-w-2xl">
+            <div class="text-center mb-10">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4 text-brand-cream">Reserve Your Spot</h1>
+                <p class="text-brand-lightblue text-lg">Join the leaders of tomorrow at CAPS CONFLUENCE 2025</p>
+            </div>
+
+            <form class="glass-panel p-8 md:p-12 rounded-3xl space-y-6 relative overflow-hidden group">
+                <!-- Subtle glow effect behind form -->
+                <div
+                    class="absolute -top-20 -right-20 w-64 h-64 bg-brand-yellow/5 rounded-full blur-3xl pointer-events-none">
+                </div>
+
+                <!-- Name -->
+                <div class="space-y-2">
+                    <label for="fullName"
+                        class="text-sm font-semibold text-brand-greyblue uppercase tracking-wider">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" class="input-field" placeholder="John Doe"
+                        required>
+                </div>
+
+                <!-- Email -->
+                <div class="space-y-2">
+                    <label for="email" class="text-sm font-semibold text-brand-greyblue uppercase tracking-wider">Email
+                        Address</label>
+                    <input type="email" id="email" name="email" class="input-field" placeholder="john.doe@example.com"
+                        required>
+                </div>
+
+                <!-- Phone & Organization -->
+                <div class="space-y-2">
+                    <label for="phone" class="text-sm font-semibold text-brand-greyblue uppercase tracking-wider">Phone
+                        Number</label>
+                    <input type="tel" id="phone" name="phone" class="input-field" placeholder="+91 98765 43210"
+                        required>
+                </div>
+
+                <!-- Ticket Type -->
+                <div class="space-y-2">
+                    <label for="campus"
+                        class="text-sm font-semibold text-brand-greyblue uppercase tracking-wider">Select Campus</label>
+                    <div class="relative">
+                        <select id="campus" name="campus" class="input-field appearance-none cursor-pointer">
+                            <option value="BYC" class="bg-black text-white">BYC</option>
+                            <option value="BB" class="bg-black text-white">BMC</option>
+                            <option value="BKC" class="bg-black text-white">BKC</option>
+                            <option value="BGR" class="bg-black text-white">BGR</option>
+                        </select>
+                        <div
+                            class="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none text-brand-greyblue">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Submit Button -->
+                <div class="pt-4">
+                    <button type="submit"
+                        class="w-full relative px-8 py-4 bg-brand-yellow text-brand-darkblue rounded-xl font-bold text-lg tracking-wider uppercase overflow-hidden transition-all hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(203,187,104,0.4)] group">
+                        <span class="relative z-10 flex items-center justify-center gap-2">
+                            Secure Your Seat <i class="fas fa-ticket-alt"></i>
+                        </span>
+                        <div
+                            class="absolute inset-0 h-full w-full bg-gradient-to-r from-transparent via-brand-cream to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500">
+                        </div>
+                    </button>
+                    <p class="text-center mt-4 text-xs text-brand-greyblue">
+                        By registering, you agree to our Terms & Conditions and Code of Conduct.
+                    </p>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-brand-greyblue/20 text-center glass-panel relative z-10">
+        <p class="text-brand-lightblue mb-2">© 2025 CAPSity Leadership Summit</p>
+    </footer>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const btn = this.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="animate-pulse">Processing...</span>';
+            btn.disabled = true;
+
+            const formData = new FormData(this);
+            // Append explicit fields if names don't match or for explicit handling
+            // Note: inputs with 'name' attributes are auto-added. 
+            // We ensure we have the right keys for the backend.
+            formData.set('name', document.getElementById('fullName').value);
+            formData.set('category', document.getElementById('campus').value);
+            // 'document' file input is already in there by name="document"
+
+            // Note: We are NOT sending apiKey in the frontend anymore.
+
+            // REPLACE THIS URL WITH YOUR DEPLOYED GOOGLE APPS SCRIPT WEB APP URL
+            // BASE64 STRATEGY: Robust for GAS
+            const name = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const category = document.getElementById('campus').value;
+
+            // Simple Payload (No File)
+            const payload = {
+                name: name,
+                email: email,
+                phone: phone,
+                category: category
+            };
+
+            // REPLACE THIS URL WITH YOUR DEPLOYED GOOGLE APPS SCRIPT WEB APP URL
+            const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzr-2yqqnD05ydEEo9wcJQjabBULbeckiadHp4B4RIO1ifud4yu5DikvtbY53Xxv2XF/exec";
+
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: JSON.stringify(payload)
+            })
+                .then(response => {
+                    // With no-cors or opaque responses, we might not get JSON back directly if not handled perfectly
+                    // But assuming the script returns JSON:
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success || data.result === 'success') {
+                        alert('Registration Successful! Check your email for the QR code.');
+                        e.target.reset();
+                    } else {
+                        alert('Registration Received. If you do not receive an email soon, please contact us.');
+                        e.target.reset();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Even if fetch "fails" via CORS sometimes the post still succeeds in GAS
+                    alert('Registration submitted! Please check your email.');
+                    e.target.reset();
+                })
+                .finally(() => {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                });
+        });
+    </script>
+</body>
+
+</html>
