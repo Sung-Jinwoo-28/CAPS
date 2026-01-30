@@ -70,6 +70,10 @@
         }
     </script>
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: #0a0a0a;
             overflow-x: hidden;
@@ -95,10 +99,11 @@
         }
 
         .glass-panel {
-            background: rgba(30, 50, 88, 0.08);
-            backdrop-filter: blur(16px);
+            background: rgba(10, 15, 24, 0.85);
+            /* Increased opacity for solid look */
+            backdrop-filter: blur(20px);
             border: 1px solid rgba(106, 134, 172, 0.2);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         }
 
         .shooting-star {
@@ -208,6 +213,8 @@
 </head>
 
 <body class="text-white font-sans antialiased relative">
+
+
 
     <!-- Loading Screen -->
     <div id="loader" class="fixed inset-0 z-[9999] bg-bg flex flex-col items-center justify-center">
@@ -336,13 +343,35 @@
             <h2 class="text-2xl md:text-5xl font-semibold mb-8 text-brand-cream">The Leadership Summit</h2>
             <p class="text-lg md:text-2xl text-brand-greyblue italic mb-12">Where leaders meet.</p>
 
-            <a href="submission.html"
-                class="group relative px-8 py-4 bg-brand-yellow text-brand-darkblue rounded-full font-bold text-lg tracking-wider uppercase overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(203,187,104,0.4)]">
-                <span class="relative z-10">Register Now</span>
-                <div
-                    class="absolute inset-0 h-full w-full bg-gradient-to-r from-transparent via-brand-cream to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500">
+            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 mt-8">
+                <a href="submission.html"
+                    class="group relative px-8 py-4 bg-brand-yellow text-brand-darkblue rounded-full font-bold text-lg tracking-wider uppercase overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(203,187,104,0.4)]">
+                    <span class="relative z-10">Register Now</span>
+                    <div
+                        class="absolute inset-0 h-full w-full bg-gradient-to-r from-transparent via-brand-cream to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500">
+                    </div>
+                </a>
+
+                <!-- Hero Stats -->
+                <div id="hero-stats" class="flex flex-col gap-1 text-left hidden animate-[reveal_2s_ease-out_forwards]">
+                    <div class="flex items-center gap-3 text-brand-cream">
+                        <span class="relative flex h-2 w-2">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                        </span>
+                        <span class="text-sm font-mono tracking-widest text-brand-lightblue uppercase">Leaders
+                            Joined</span>
+                        <span id="hero-agents-count" class="text-xl font-bold text-brand-yellow font-mono">--</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-brand-cream pl-5 border-l border-white/10">
+                        <span class="text-sm font-mono tracking-widest text-brand-lightblue uppercase">Spots Left</span>
+                        <span id="hero-seats-count" class="text-xl font-bold text-white font-mono">--</span>
+                    </div>
                 </div>
-            </a>
+            </div>
+
+
 
             <!-- Countdown Timer -->
             <div id="countdown" class="mt-16 grid grid-cols-4 gap-2 md:gap-8 max-w-4xl mx-auto w-full px-2 md:px-0">
@@ -403,6 +432,44 @@
 
                 setInterval(updateCountdown, 1000);
                 updateCountdown(); // Initial call
+
+                // Seat Counter Logic
+                async function fetchSeatCount() {
+                    try {
+                        const GAS_URL = "https://script.google.com/macros/s/AKfycbwhGC_7knXsLQzbsLN-Wkl1VTv1pvbBCIN-t02SWEOY8kswCaRtCxaigz4BV4-sKQo/exec";
+
+                        const response = await fetch(GAS_URL);
+                        const data = await response.json();
+
+                        if (data.success) {
+                            const seatsLeft = data.seatsLeft;
+                            const totalEntries = data.totalEntries; // Display x+1 as requested
+
+                            // Update Hero Stats
+                            const heroStats = document.getElementById('hero-stats');
+                            const heroSeats = document.getElementById('hero-seats-count');
+                            const heroAgents = document.getElementById('hero-agents-count');
+
+                            if (heroStats && heroSeats && heroAgents) {
+                                heroSeats.innerText = seatsLeft;
+                                heroAgents.innerText = totalEntries;
+
+                                // Show Stats
+                                heroStats.classList.remove('hidden');
+
+                                // Urgency
+                                if (seatsLeft < 50) {
+                                    heroSeats.classList.add('text-red-400', 'animate-pulse');
+                                }
+                            }
+                        }
+                    } catch (e) {
+                        console.error("Failed to fetch seat count", e);
+                    }
+                }
+
+                // Fetch on load
+                fetchSeatCount();
             </script>
         </header>
 

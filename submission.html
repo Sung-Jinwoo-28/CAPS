@@ -183,7 +183,9 @@
         <div class="w-full max-w-2xl">
             <div class="text-center mb-10">
                 <h1 class="text-4xl md:text-5xl font-bold mb-4 text-brand-cream">Reserve Your Spot</h1>
-                <p class="text-brand-lightblue text-lg">Join the leaders of tomorrow at CAPS CONFLUENCE 2025</p>
+                <p class="text-brand-lightblue text-lg">Join <span id="live-agent-count"
+                        class="text-brand-yellow font-bold animate-pulse">---</span> leaders of tomorrow at CAPS
+                    CONFLUENCE 2025</p>
             </div>
 
             <!-- Form and Already Submitted View Container -->
@@ -308,12 +310,17 @@
                     </p>
                 </div>
 
-                <div class="pt-8">
+                <div class="pt-8 flex flex-col items-center gap-4">
                     <a href="index.html"
                         class="inline-flex items-center gap-2 px-10 py-4 bg-gradient-to-r from-brand-blue to-brand-darkblue text-brand-cream rounded-full font-bold tracking-wider hover:scale-105 transition-all shadow-lg shadow-brand-blue/20 border border-white/10 group">
                         <span>Return to Home</span>
                         <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
                     </a>
+
+                    <button id="register-again-btn"
+                        class="text-brand-greyblue text-sm hover:text-brand-yellow font-medium transition-colors border-b border-transparent hover:border-brand-yellow pb-0.5">
+                        Register Another Person
+                    </button>
                 </div>
             </div>
         </div>
@@ -325,11 +332,40 @@
     </footer>
 
     <script>
+            // Fetch Live Count
+            (async function fetchStats() {
+                try {
+                    const GAS_URL = "https://script.google.com/macros/s/AKfycbwhGC_7knXsLQzbsLN-Wkl1VTv1pvbBCIN-t02SWEOY8kswCaRtCxaigz4BV4-sKQo/exec";
+                    const response = await fetch(GAS_URL);
+                    const data = await response.json();
+                    if (data.success && data.totalEntries) {
+                        const el = document.getElementById('live-agent-count');
+                        if (el) {
+                            el.innerText = data.totalEntries; // Display x+1 as requested
+                            el.classList.remove('animate-pulse'); // Stop pulsing once loaded
+                        }
+                    }
+                } catch (e) {
+                    console.error("Stats fetch failed", e);
+                }
+            })();
+
         // Check for existing registration on load
         document.addEventListener('DOMContentLoaded', function () {
             if (localStorage.getItem('caps_registration_submitted') === 'true') {
                 document.getElementById('registration-form-container').classList.add('hidden');
                 document.getElementById('already-submitted-view').classList.remove('hidden');
+            }
+
+            // Register Again Logic
+            const regAgainBtn = document.getElementById('register-again-btn');
+            if (regAgainBtn) {
+                regAgainBtn.addEventListener('click', function () {
+                    if (confirm('Are you sure you want to register another person? This will clear your current session.')) {
+                        localStorage.removeItem('caps_registration_submitted');
+                        window.location.reload();
+                    }
+                });
             }
         });
 
@@ -383,7 +419,7 @@
             };
 
             // REPLACE THIS URL WITH YOUR DEPLOYED GOOGLE APPS SCRIPT WEB APP URL
-            const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzr-2yqqnD05ydEEo9wcJQjabBULbeckiadHp4B4RIO1ifud4yu5DikvtbY53Xxv2XF/exec";
+            const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzg-YrhzeXmYuOcgVkVPKh4jBFd4r_o6r6-AMs-DnXA5_mdGjr1BZHbV66b6aZd9B8a/exec";
 
             fetch(SCRIPT_URL, {
                 method: 'POST',
@@ -404,6 +440,17 @@
 
                         // Show Success Modal
                         successModal.classList.remove('hidden');
+
+                        // Show Total Entries if available
+                        if (data.totalEntries) {
+                            const countDisplay = document.getElementById('total-entries-display');
+                            const countSpan = document.getElementById('total-entries-count');
+                            if (countDisplay && countSpan) {
+                                countSpan.innerText = data.totalEntries;
+                                countDisplay.classList.remove('hidden');
+                            }
+                        }
+
                         setTimeout(() => {
                             successModalContent.classList.remove('scale-95', 'opacity-0');
                             successModalContent.classList.add('scale-100', 'opacity-100');
@@ -479,7 +526,10 @@
 
             if (backHomeBtn) {
                 backHomeBtn.addEventListener('click', function (e) {
-                    if (!hasSeenModal) {
+                    // Check if user is already registered
+                    const isRegistered = localStorage.getItem('caps_registration_submitted') === 'true';
+
+                    if (!hasSeenModal && !isRegistered) {
                         e.preventDefault(); // Stop navigation
 
                         // Show Modal
@@ -531,14 +581,14 @@
             </div>
 
             <!-- Text Content -->
-            <h3 class="text-3xl font-bold text-white mb-2 tracking-tight">Mission Accomplished!</h3>
+            <h3 class="text-3xl font-bold text-white mb-2 tracking-tight">Registration Confirmed!</h3>
             <div
                 class="h-1 w-20 bg-gradient-to-r from-transparent via-brand-yellow to-transparent mx-auto mb-6 opacity-50">
             </div>
 
             <p class="text-brand-lightblue text-lg mb-8 leading-relaxed font-light">
-                Your registration has been successfully transmitted. Check your comms (email) for your mission
-                briefing and QR code.
+                Your registration has been successfully received. Check your email for your confirmation
+                details and QR code.
             </p>
 
             <!-- Button -->
