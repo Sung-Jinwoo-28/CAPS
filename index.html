@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CAPS CONFLUENCE | The Leadership Summit</title>
+    <link rel="icon" href="https://drive.google.com/thumbnail?id=1EurCCG3ucgcsmKBF4Rkcd2sGjlsKIYOE&sz=s3000">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
@@ -306,6 +307,8 @@
             <a href="submission.html"
                 class="text-3xl text-brand-cream font-bold hover:text-brand-yellow transition-colors mobile-link">Register</a>
             <a href="#contact"
+                class="text-3xl text-brand-cream font-bold hover:text-brand-yellow transition-colors mobile-link">Brochure</a>
+            <a href="#contact"
                 class="text-3xl text-brand-cream font-bold hover:text-brand-yellow transition-colors mobile-link">Contact</a>
         </div>
 
@@ -434,9 +437,9 @@
                 updateCountdown(); // Initial call
 
                 // Seat Counter Logic
-                async function fetchSeatCount() {
+                (async function fetchStats() {
                     try {
-                        const GAS_URL = "https://script.google.com/macros/s/AKfycbwhGC_7knXsLQzbsLN-Wkl1VTv1pvbBCIN-t02SWEOY8kswCaRtCxaigz4BV4-sKQo/exec";
+                        const GAS_URL = "https://script.google.com/macros/s/AKfycby5SAp-UsovmErmQ49j9wXTHoIlTV1VFssKCf5lm1RsBwOkTDzf5PhV9xUAL6c-wfoO/exec";
 
                         const response = await fetch(GAS_URL);
                         const data = await response.json();
@@ -466,10 +469,7 @@
                     } catch (e) {
                         console.error("Failed to fetch seat count", e);
                     }
-                }
-
-                // Fetch on load
-                fetchSeatCount();
+                })();
             </script>
         </header>
 
