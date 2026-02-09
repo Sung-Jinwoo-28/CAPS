@@ -325,9 +325,12 @@
                                 <select id="workshop" name="workshop" class="input-field appearance-none cursor-pointer"
                                     required>
                                     <option value="" disabled selected class="text-gray-500">Choose a Workshop</option>
-                                    <option value="Workshop A" class="bg-black text-white">Workshop A</option>
-                                    <option value="Workshop B" class="bg-black text-white">Workshop B</option>
-                                    <option value="Workshop C" class="bg-black text-white">Workshop C</option>
+                                    <option value="Digital Marketing" class="bg-black text-white">Digital Marketing
+                                    </option>
+                                    <option value="From Data To Decisions" class="bg-black text-white">From Data To
+                                        Decisions</option>
+                                    <option value="Financial Literacy for Professionals" class="bg-black text-white">
+                                        Financial Literacy for Professionals</option>
                                 </select>
                                 <div
                                     class="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none text-brand-greyblue">
@@ -485,7 +488,7 @@
                             statsList.innerHTML = ''; // Clear loading skeleton
 
                             // Iterate over known workshops (A, B, C) to ensure order
-                            const workshops = ["Workshop A", "Workshop B", "Workshop C"];
+                            const workshops = ["Digital Marketing", "From Data To Decisions", "Financial Literacy for Professionals"];
 
                             workshops.forEach(wsTitle => {
                                 const count = counts[wsTitle] || 0;
