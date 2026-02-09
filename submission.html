@@ -171,6 +171,9 @@
         <a href="index.html" class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
             <img src="https://drive.google.com/thumbnail?id=1EurCCG3ucgcsmKBF4Rkcd2sGjlsKIYOE&sz=s3000" alt="CAPS Logo"
                 class="h-10 md:h-16 w-auto">
+            <div class="h-8 w-px bg-brand-greyblue/30 mx-2"></div>
+            <img src="https://drive.google.com/thumbnail?id=1BJIdzCMntlUnknj4Vmd-f4W8WB0pG2lh&sz=s3000" alt="Event Logo"
+                class="h-10 md:h-16 w-auto">
         </a>
         <a href="index.html" id="back-home-btn"
             class="text-brand-cream hover:text-brand-yellow transition-colors font-semibold flex items-center gap-2">
@@ -452,7 +455,7 @@
         // Fetch Live Count & Workshop Status
         (async function fetchStats() {
             try {
-                const GAS_URL = "https://script.google.com/macros/s/AKfycbyW4_Op9QTVDQV5jjW6THBElXmTklvsLmQ4uYvGIHWbP-D3wFJUtJFOZC1pXcFoAdev5w/exec";
+                const GAS_URL = "https://script.google.com/macros/s/AKfycbwkoqguQTZwODCZzBuC275BMdtyM26j5loqrPZnfegLNmDypqvwnX5sSi6YhS9Tt2I_lg/exec";
                 const response = await fetch(GAS_URL);
                 const data = await response.json();
 
@@ -749,7 +752,7 @@
                     yellowPeriods: yellowData.periods || [] // Send array of selected periods
                 };
 
-                const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyW4_Op9QTVDQV5jjW6THBElXmTklvsLmQ4uYvGIHWbP-D3wFJUtJFOZC1pXcFoAdev5w/exec";
+                const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwkoqguQTZwODCZzBuC275BMdtyM26j5loqrPZnfegLNmDypqvwnX5sSi6YhS9Tt2I_lg/exec";
 
                 fetch(SCRIPT_URL, {
                     method: 'POST',
