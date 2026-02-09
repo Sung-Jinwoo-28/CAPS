@@ -301,7 +301,7 @@
         <nav
             class="sticky top-0 z-50 glass-panel border-b border-brand-greyblue/20 px-6 py-4 flex justify-between items-center transition-all duration-300">
             <a href="index.html" class="flex items-center space-x-3">
-                <img src="https://drive.google.com/thumbnail?id=11zuFvz8D3AL_OEOZ3cbJ1uZ3XHFm-PE5&sz=s3500"
+                <img src="https://drive.google.com/thumbnail?id=11zuFvz8D3AL_OEOZ3cbJ1uZ3XHFm-PE5&sz=s4000"
                     alt="CAPS Logo" class="h-12 md:h-18 w-auto transition-all duration-300">
                 <div class="h-8 w-px bg-brand-greyblue/30 mx-2"></div>
                 <img src="https://drive.google.com/thumbnail?id=1EurCCG3ucgcsmKBF4Rkcd2sGjlsKIYOE&sz=s3000"
@@ -386,7 +386,7 @@
                     }
                 }
             </style>
-            <h2 class="text-2xl md:text-5xl font-semibold mb-8 text-brand-cream">Envision and Allign</h2>
+            <h2 class="text-2xl md:text-5xl font-semibold mb-8 text-brand-cream">Envision and Align</h2>
 
             <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 mt-8">
                 <a href="submission.html"
@@ -397,23 +397,7 @@
                     </div>
                 </a>
 
-                <!-- Hero Stats -->
-                <div id="hero-stats" class="flex flex-col gap-1 text-left hidden animate-[reveal_2s_ease-out_forwards]">
-                    <div class="flex items-center gap-3 text-brand-cream">
-                        <span class="relative flex h-2 w-2">
-                            <span
-                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
-                        </span>
-                        <span class="text-sm font-mono tracking-widest text-brand-lightblue uppercase">Students
-                            Joined</span>
-                        <span id="hero-agents-count" class="text-xl font-bold text-brand-yellow font-mono">--</span>
-                    </div>
-                    <div class="flex items-center gap-3 text-brand-cream pl-5 border-l border-white/10">
-                        <span class="text-sm font-mono tracking-widest text-brand-lightblue uppercase">Spots Left</span>
-                        <span id="hero-seats-count" class="text-xl font-bold text-white font-mono">--</span>
-                    </div>
-                </div>
+
             </div>
 
 
@@ -490,23 +474,7 @@
                             const seatsLeft = data.seatsLeft;
                             const totalEntries = data.totalEntries; // Display x+1 as requested
 
-                            // Update Hero Stats
-                            const heroStats = document.getElementById('hero-stats');
-                            const heroSeats = document.getElementById('hero-seats-count');
-                            const heroAgents = document.getElementById('hero-agents-count');
 
-                            if (heroStats && heroSeats && heroAgents) {
-                                heroSeats.innerText = seatsLeft;
-                                heroAgents.innerText = totalEntries;
-
-                                // Show Stats
-                                heroStats.classList.remove('hidden');
-
-                                // Urgency
-                                if (seatsLeft < 50) {
-                                    heroSeats.classList.add('text-red-400', 'animate-pulse');
-                                }
-                            }
                         }
                     } catch (e) {
                         console.error("Failed to fetch seat count", e);
