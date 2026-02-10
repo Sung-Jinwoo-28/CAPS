@@ -299,13 +299,13 @@
 
         <!-- Navbar -->
         <nav
-            class="sticky top-0 z-50 glass-panel border-b border-brand-greyblue/20 px-6 py-4 flex justify-between items-center transition-all duration-300">
-            <a href="index.html" class="flex items-center space-x-3">
+            class="sticky top-0 z-50 glass-panel border-b border-brand-greyblue/20 px-4 md:px-6 py-3 md:py-4 flex justify-between items-center transition-all duration-300">
+            <a href="index.html" class="flex items-center space-x-2 md:space-x-3">
                 <img src="https://drive.google.com/thumbnail?id=11zuFvz8D3AL_OEOZ3cbJ1uZ3XHFm-PE5&sz=s4000"
-                    alt="CAPS Logo" class="h-12 md:h-18 w-auto transition-all duration-300">
-                <div class="h-8 w-px bg-brand-greyblue/30 mx-2"></div>
+                    alt="CAPS Logo" class="h-8 md:h-18 w-auto transition-all duration-300">
+                <div class="h-6 md:h-8 w-px bg-brand-greyblue/30 mx-1 md:mx-2"></div>
                 <img src="https://drive.google.com/thumbnail?id=1EurCCG3ucgcsmKBF4Rkcd2sGjlsKIYOE&sz=s3000"
-                    alt="Event Logo" class="h-12 md:h-18 w-auto transition-all duration-300">
+                    alt="Event Logo" class="h-8 md:h-18 w-auto transition-all duration-300">
             </a>
 
             <!-- Desktop Menu -->
@@ -494,7 +494,7 @@
 
                 <!-- Cards Container -->
                 <div id="events-cards-stack"
-                    class="relative w-[90%] md:w-full max-w-sm md:max-w-4xl lg:max-w-6xl h-[60vh] md:h-[65vh] flex items-center justify-center shrink-0">
+                    class="relative w-[95%] md:w-full max-w-sm md:max-w-4xl lg:max-w-6xl h-[60vh] md:h-[65vh] flex items-center justify-center shrink-0">
 
                     <!-- Card 1: Broadcast / Panel -->
                     <div
@@ -511,12 +511,12 @@
                         </div>
 
                         <div
-                            class="relative z-10 w-full h-full flex flex-col justify-center items-center p-6 md:p-10 text-center">
+                            class="relative z-10 w-full h-full flex flex-col justify-center items-center p-4 md:p-10 text-center overflow-y-auto hide-scrollbar">
                             <!-- Title Area -->
-                            <div class="w-full max-w-4xl mb-8 relative">
+                            <div class="w-full max-w-4xl mb-2 md:mb-8 relative shrink-0">
 
                                 <h3
-                                    class="text-4xl sm:text-6xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-brand-cream to-brand-greyblue leading-[0.9] mb-6">
+                                    class="text-4xl sm:text-6xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-brand-cream to-brand-greyblue leading-[0.9] mb-2 md:mb-6">
                                     PANEL<br>DISCUSSION
                                 </h3>
 
@@ -524,15 +524,13 @@
 
                             <!-- Content Area -->
                             <div class="w-full max-w-3xl">
-                                <h4 class="text-2xl text-brand-yellow font-bold mb-6 font-mono">
+                                <h4 class="text-lg md:text-2xl text-brand-yellow font-bold mb-2 md:mb-6 font-mono">
                                     Panel Discussions
                                 </h4>
-                                <p class="text-lg text-brand-lightblue leading-relaxed mb-8">
+                                <p class="text-sm md:text-lg text-brand-lightblue leading-snug md:leading-relaxed mb-0">
                                     Panel discussions anchor CAPS Confluence: Beyond Expertise Alone encourages
-                                    student interaction, helping clarify interests and build networks; Ideas to Impact
-                                    explores evolving professional identities, highlighting adaptability and continuous
-                                    learning; Connected Intelligence examines interdisciplinary collaboration, with the
-                                    key takeaway that integrated thinking across domains drives scalable, sustainable
+                                    student interaction. Ideas to Impact explores evolving professional identities.
+                                    Connected Intelligence examines interdisciplinary collaboration, driving scalable
                                     innovation.
                                 </p>
 
@@ -549,34 +547,33 @@
                         </div>
 
                         <div
-                            class="relative z-10 w-full h-full p-6 md:p-14 flex flex-col justify-center items-center text-center">
+                            class="relative z-10 w-full h-full p-4 md:p-14 flex flex-col justify-center items-center text-center overflow-y-auto hide-scrollbar">
                             <div
                                 class="absolute top-0 w-full h-1 bg-gradient-to-r from-brand-yellow via-brand-blue to-brand-yellow">
                             </div>
 
                             <h3
-                                class="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tighter text-white mb-2 uppercase">
+                                class="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tighter text-white mb-2 uppercase shrink-0">
                                 Certified<span class="text-brand-yellow"> Workshops</span></h3>
 
                             <div class="w-full max-w-3xl text-left">
-                                <p class="text-lg text-brand-lightblue leading-relaxed mb-8 text-center">
-                                    The Certified Workshops at CAPS Confluence run as parallel sessions, allowing
-                                    participants to select one specialised track. Building Digital Presence explores
-                                    digital marketing and impact measurement; Design Thinking focuses on human-centered
-                                    innovation and structured creativity; Data-Driven Intelligence introduces
-                                    AI-informed decision-making to enhance analytical accuracy, strategy, and long-term
-                                    impact.
+                                <p
+                                    class="text-sm md:text-lg text-brand-lightblue leading-snug md:leading-relaxed mb-4 md:mb-8 text-center">
+                                    Select one specialised track: Building Digital Presence (marketing),
+                                    Design Thinking (innovation), or Data-Driven Intelligence (analytics).
                                 </p>
-                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                    <div class="bg-white/5 p-4 border-l-2 border-brand-yellow">
-                                        <h5 class="text-brand-cream font-bold mb-2 text-sm">Digital Marketing</h5>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 text-center md:text-left">
+                                    <div class="bg-white/5 p-2 md:p-4 border-l-2 border-brand-yellow">
+                                        <h5 class="text-brand-cream font-bold mb-0 md:mb-2 text-xs md:text-sm">Digital
+                                            Marketing</h5>
                                     </div>
-                                    <div class="bg-white/5 p-4 border-l-2 border-brand-blue">
-                                        <h5 class="text-brand-cream font-bold mb-2 text-sm">From Data To Decisions</h5>
+                                    <div class="bg-white/5 p-2 md:p-4 border-l-2 border-brand-blue">
+                                        <h5 class="text-brand-cream font-bold mb-0 md:mb-2 text-xs md:text-sm">From Data
+                                            To Decisions</h5>
                                     </div>
-                                    <div class="bg-white/5 p-4 border-l-2 border-brand-greyblue">
-                                        <h5 class="text-brand-cream font-bold mb-2 text-sm">Financial Literacy for
-                                            Professionals</h5>
+                                    <div class="bg-white/5 p-2 md:p-4 border-l-2 border-brand-greyblue">
+                                        <h5 class="text-brand-cream font-bold mb-0 md:mb-2 text-xs md:text-sm">Financial
+                                            Literacy</h5>
                                     </div>
                                 </div>
                             </div>
@@ -589,22 +586,25 @@
                         class="event-card absolute top-0 left-0 w-full h-full bg-[#050505] rounded-3xl overflow-hidden shadow-2xl border border-brand-yellow/20 transform origin-center flex flex-col">
                         <div class="absolute inset-0 bg-gradient-to-b from-brand-yellow/5 to-transparent"></div>
 
-                        <div class="relative z-10 flex-1 flex flex-col items-center justify-center p-10 text-center">
-                            <i class="fas fa-chalkboard-teacher text-4xl text-brand-yellow mb-8 opacity-80"></i>
-                            <h3 class="text-3xl sm:text-5xl md:text-6xl font-serif italic text-brand-cream mb-4">
+                        <div
+                            class="relative z-10 flex-1 flex flex-col items-center justify-center p-4 md:p-10 text-center overflow-y-auto hide-scrollbar">
+                            <i
+                                class="fas fa-chalkboard-teacher text-2xl md:text-4xl text-brand-yellow mb-2 md:mb-8 opacity-80 shrink-0"></i>
+                            <h3
+                                class="text-3xl sm:text-5xl md:text-6xl font-serif italic text-brand-cream mb-1 md:mb-4 shrink-0">
                                 Seminar
                             </h3>
-                            <h4 class="text-xl md:text-2xl text-brand-yellow font-bold uppercase tracking-wide mb-6">
-                                The Industry Interface:<br>Transforming Ideas into Impact
+                            <h4
+                                class="text-sm md:text-2xl text-brand-yellow font-bold uppercase tracking-wide mb-2 md:mb-6 shrink-0">
+                                The Industry Interface
                             </h4>
-                            <div class="w-16 h-[1px] bg-brand-yellow mb-6"></div>
-                            <p class="text-lg text-brand-lightblue max-w-2xl font-light leading-relaxed">
-                                Through practical insights and real-world experiences shared by industry professionals,
-                                the session will highlight how innovative ideas are nurtured, refined, and scaled into
-                                impactful solutions. Students shall be exposed to challenges, expectations, and
-                                decision-making processes involved in working at the industry interface, while being
-                                encouraged to apply their academic knowledge to create measurable and meaningful impact
-                                beyond the classroom.
+                            <div class="w-16 h-[1px] bg-brand-yellow mb-2 md:mb-6 shrink-0"></div>
+                            <p
+                                class="text-sm md:text-lg text-brand-lightblue max-w-2xl font-light leading-snug md:leading-relaxed">
+                                Through practical insights by industry professionals, the session highlights how ideas
+                                are nurtured, refined, and scaled. Students get exposed to challenges and
+                                decision-making
+                                processes, bridging the gap between classroom learning and real-world impact.
                             </p>
                         </div>
                     </div>
@@ -621,29 +621,24 @@
                         </div>
 
                         <div
-                            class="relative z-10 w-full h-full flex flex-col justify-center items-center p-6 md:p-8 text-center">
-                            <div class="mb-6 relative">
+                            class="relative z-10 w-full h-full flex flex-col justify-center items-center p-4 md:p-8 text-center overflow-y-auto hide-scrollbar">
+                            <div class="mb-4 md:mb-6 relative shrink-0">
                                 <h3
-                                    class="text-4xl sm:text-6xl md:text-7xl font-black text-white uppercase tracking-tighter mb-4">
+                                    class="text-4xl sm:text-6xl md:text-7xl font-black text-white uppercase tracking-tighter mb-2 md:mb-4">
                                     Fireside<br><span
                                         class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-200">Chat</span>
                                 </h3>
                                 <div
-                                    class="text-xl md:text-2xl text-orange-200 font-bold uppercase tracking-wide max-w-3xl mx-auto leading-snug">
-                                    Curiosity as a Career Advantage<br>
-                                    <span
-                                        class="text-white/70 text-base md:text-lg mt-2 block font-medium normal-case tracking-normal">How
-                                        Asking Better Questions Drives Innovation</span>
+                                    class="text-sm md:text-2xl text-orange-200 font-bold uppercase tracking-wide max-w-3xl mx-auto leading-snug">
+                                    Curiosity as a Career Advantage
                                 </div>
                             </div>
 
-                            <p class="text-lg text-brand-cream/80 max-w-3xl font-medium mb-8 leading-relaxed">
-                                Explore the power of strategic questioning as a catalyst for breakthroughs across
-                                business technology, research, and media. Through concrete real-world examples, the
-                                discussion will unpack how the right questions uncover hidden opportunities and
-                                challenge conventional thinking. The session will also highlight the role of
-                                interdisciplinary curiosity in shaping unique professional niches, equipping attendees
-                                with practical frameworks to ask better, more impactful questions.
+                            <p
+                                class="text-sm md:text-lg text-brand-cream/80 max-w-3xl font-medium mb-0 md:mb-8 leading-snug md:leading-relaxed">
+                                Explore strategic questioning as a catalyst for breakthroughs. Unpack how the right
+                                questions uncover opportunities. The session highlights interdisciplinary curiosity
+                                in shaping professional niches.
                             </p>
 
                         </div>
@@ -1113,6 +1108,7 @@
                     isMenuOpen = !isMenuOpen;
                     if (isMenuOpen) {
                         mobileMenu.classList.remove('translate-x-full');
+                        mobileMenu.classList.add('translate-x-0');
                         // Animate hamburger to X
                         if (spans.length >= 3) {
                             spans[0].classList.add('rotate-45', 'translate-y-0');
@@ -1124,6 +1120,7 @@
                         document.body.style.overflow = 'hidden';
                     } else {
                         mobileMenu.classList.add('translate-x-full');
+                        mobileMenu.classList.remove('translate-x-0');
                         // Animate X back to hamburger
                         if (spans.length >= 3) {
                             spans[0].classList.remove('rotate-45', 'translate-y-0');
