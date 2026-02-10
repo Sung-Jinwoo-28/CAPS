@@ -147,6 +147,12 @@
             background: #6a86ac;
         }
 
+        .event-card {
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
         .shape {
             position: absolute;
             transition: top 3s ease-in-out, left 3s ease-in-out;
@@ -1068,12 +1074,14 @@
                 touchMultiplier: 2,
             });
 
-            function raf(time) {
-                lenis.raf(time);
-                requestAnimationFrame(raf);
-            }
+            // Synchronize Lenis with GSAP
+            lenis.on('scroll', ScrollTrigger.update);
 
-            requestAnimationFrame(raf);
+            gsap.ticker.add((time) => {
+                lenis.raf(time * 1000); // Lenis requires time in milliseconds
+            });
+
+            gsap.ticker.lagSmoothing(0); // Disable lag smoothing for instant sync
 
             // Reveal on scroll observer
             const observerOptions = {
