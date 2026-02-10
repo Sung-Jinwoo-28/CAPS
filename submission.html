@@ -450,7 +450,12 @@
 
     <script>
         // Configuration
-        const WORKSHOP_LIMIT = 5;
+        const WORKSHOP_LIMITS = {
+            "Financial Literacy for Professionals": 150,
+            "Digital Marketing": 125,
+            "From Data To Decisions": 125
+        };
+        const DEFAULT_LIMIT = 125; // Fallback
 
         // Fetch Live Count & Workshop Status
         (async function fetchStats() {
@@ -478,10 +483,13 @@
                         // Update Dropdown
                         options.forEach(opt => {
                             const val = opt.value;
-                            if (val && counts[val] >= WORKSHOP_LIMIT) {
-                                opt.disabled = true;
-                                opt.innerText = `${val} (FULL)`;
-                                opt.classList.add('text-gray-500', 'bg-gray-800');
+                            if (val) {
+                                const limit = WORKSHOP_LIMITS[val] || DEFAULT_LIMIT;
+                                if (counts[val] >= limit) {
+                                    opt.disabled = true;
+                                    opt.innerText = `${val} (FULL)`;
+                                    opt.classList.add('text-gray-500', 'bg-gray-800');
+                                }
                             }
                         });
 
@@ -490,20 +498,21 @@
                         if (statsList) {
                             statsList.innerHTML = ''; // Clear loading skeleton
 
-                            // Iterate over known workshops (A, B, C) to ensure order
+                            // Iterate over known workshops to ensure order
                             const workshops = ["Digital Marketing", "From Data To Decisions", "Financial Literacy for Professionals"];
 
                             workshops.forEach(wsTitle => {
                                 const count = counts[wsTitle] || 0;
-                                const isFull = count >= WORKSHOP_LIMIT;
-                                const percentage = Math.min(100, (count / WORKSHOP_LIMIT) * 100);
+                                const limit = WORKSHOP_LIMITS[wsTitle] || DEFAULT_LIMIT;
+                                const isFull = count >= limit;
+                                const percentage = Math.min(100, (count / limit) * 100);
 
                                 const html = `
                                     <div class="flex flex-col gap-1.5 p-2 transition-all hover:bg-white/5 rounded-lg">
                                         <div class="flex justify-between items-center">
                                             <span class="text-sm font-medium text-brand-lightblue uppercase tracking-wider">${wsTitle}</span>
                                             <span class="text-xs font-bold ${isFull ? 'text-red-400' : 'text-brand-yellow'}">
-                                                ${isFull ? 'FULL' : `${count}/${WORKSHOP_LIMIT}`}
+                                                ${isFull ? 'FULL' : `${count}/${limit}`}
                                             </span>
                                         </div>
                                         <div class="w-full bg-brand-blue/20 h-1 rounded-full overflow-hidden">
@@ -974,8 +983,8 @@
                 <div class="flex gap-4 items-start p-3 bg-white/5 rounded-lg border border-white/5">
                     <span
                         class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-yellow text-brand-darkblue flex items-center justify-center font-bold text-xs mt-0.5">1</span>
-                    <p class="text-brand-lightblue text-sm">Select <strong class="text-brand-cream">"CAPS
-                            CONFLUENCE"</strong> category.</p>
+                    <p class="text-brand-lightblue text-sm">Select <strong class="text-brand-cream">Events > CAPS
+                            CONFLUENCE</strong> category.</p>
                 </div>
                 <div class="flex gap-4 items-start p-3 bg-white/5 rounded-lg border border-white/5">
                     <span
