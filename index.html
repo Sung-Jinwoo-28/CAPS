@@ -310,10 +310,10 @@
 
             <!-- Desktop Menu -->
             <div class="hidden md:flex space-x-8 text-brand-lightblue font-medium">
-                <a href="#about"
-                    class="hover:text-brand-yellow hover:drop-shadow-[0_0_8px_rgba(203,187,104,0.5)] transition-all">About</a>
                 <a href="#events"
                     class="hover:text-brand-yellow hover:drop-shadow-[0_0_8px_rgba(203,187,104,0.5)] transition-all">Events</a>
+                <a href="#about"
+                    class="hover:text-brand-yellow hover:drop-shadow-[0_0_8px_rgba(203,187,104,0.5)] transition-all">About</a>
                 <a href="#pricing"
                     class="hover:text-brand-yellow hover:drop-shadow-[0_0_8px_rgba(203,187,104,0.5)] transition-all">Pricing</a>
                 <a href="submission.html"
@@ -341,10 +341,10 @@
         <!-- Mobile Menu Overlay -->
         <div id="mobile-menu"
             class="fixed inset-0 z-[60] bg-brand-darkblue/95 backdrop-blur-xl transform translate-x-full transition-transform duration-500 flex flex-col items-center justify-center space-y-8 md:hidden">
-            <a href="#about"
-                class="text-3xl text-brand-cream font-bold hover:text-brand-yellow transition-colors mobile-link">About</a>
             <a href="#events"
                 class="text-3xl text-brand-cream font-bold hover:text-brand-yellow transition-colors mobile-link">Events</a>
+            <a href="#about"
+                class="text-3xl text-brand-cream font-bold hover:text-brand-yellow transition-colors mobile-link">About</a>
             <a href="#pricing"
                 class="text-3xl text-brand-cream font-bold hover:text-brand-yellow transition-colors mobile-link">Pricing</a>
             <a href="submission.html"
@@ -465,7 +465,7 @@
                 // Seat Counter Logic
                 (async function fetchStats() {
                     try {
-                        const GAS_URL = "https://script.google.com/macros/s/AKfycbwkoqguQTZwODCZzBuC275BMdtyM26j5loqrPZnfegLNmDypqvwnX5sSi6YhS9Tt2I_lg/exec";
+                        const GAS_URL = "https://script.google.com/macros/s/AKfycbwMSfFzCxEf9ABt3qdtKqx6ty7_EO3idcMos-4IgyeQ9lXZqiEffxToNkgWclnM_and/exec";
 
                         const response = await fetch(GAS_URL);
                         const data = await response.json();
