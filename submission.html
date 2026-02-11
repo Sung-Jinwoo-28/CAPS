@@ -529,7 +529,7 @@
         // Fetch Live Count & Workshop Status
         (async function fetchStats() {
             try {
-                const GAS_URL = "https://script.google.com/macros/s/AKfycbzcX2oF2K3izOnvnBVdbvd0a-lOPUVtyz7PYyfO5dKHacRflTHmX4pHH2wIUpouXhRgbg/exec";
+                const GAS_URL = "https://script.google.com/macros/s/AKfycbwMSfFzCxEf9ABt3qdtKqx6ty7_EO3idcMos-4IgyeQ9lXZqiEffxToNkgWclnM_and/exec";
                 const response = await fetch(GAS_URL);
                 const data = await response.json();
 
@@ -908,7 +908,7 @@
                     yellowPeriods: yellowData.periods || [] // Send array of selected periods
                 };
 
-                const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzcX2oF2K3izOnvnBVdbvd0a-lOPUVtyz7PYyfO5dKHacRflTHmX4pHH2wIUpouXhRgbg/exec";
+                const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwMSfFzCxEf9ABt3qdtKqx6ty7_EO3idcMos-4IgyeQ9lXZqiEffxToNkgWclnM_and/exec";
 
                 fetch(SCRIPT_URL, {
                     method: 'POST',
@@ -1191,42 +1191,31 @@
                     <label class="text-xs font-semibold text-brand-greyblue uppercase tracking-wider">Select
                         Period</label>
                     <div class="flex gap-2">
-                        <!-- Course (Non-Christite) -->
-                        <div id="course-field" class="flex-grow">
-                            <label class="block text-brand-lightblue text-sm font-bold mb-2 tracking-wide">Course /
-                                Designation</label>
-                            <input type="text" id="course" name="course"
-                                placeholder="e.g. BBA, B.Tech, Corporate Professional"
-                                class="w-full px-4 py-3 bg-brand-darkblue/50 border border-brand-blue/30 rounded-lg text-brand-cream placeholder-brand-lightblue/30 focus:outline-none focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow transition-all backdrop-blur-sm">
-                        </div>
-
-                        <!-- Year of Study (Non-Christite) -->
-                        <div id="year-field" class="flex-grow">
-                            <label class="block text-brand-lightblue text-sm font-bold mb-2 tracking-wide">Year of
-                                Study</label>
-                            <div class="relative">
-                                <select id="yearOfStudy" name="yearOfStudy"
-                                    class="w-full px-4 py-3 bg-brand-darkblue/50 border border-brand-blue/30 rounded-lg text-brand-cream placeholder-brand-lightblue/30 focus:outline-none focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow transition-all appearance-none backdrop-blur-sm cursor-pointer">
-                                    <option value="" disabled selected>Select Year</option>
-                                    <option value="1st Year">1st Year</option>
-                                    <option value="2nd Year">2nd Year</option>
-                                    <option value="3rd Year">3rd Year</option>
-                                    <option value="4th Year">4th Year</option>
-                                    <option value="5th Year">5th Year</option>
-                                    <option value="PG / Masters">PG / Masters</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                                <div
-                                    class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-brand-yellow">
-                                    <i class="fas fa-chevron-down text-xs"></i>
-                                </div>
+                        <div class="relative flex-grow">
+                            <select id="yf-period"
+                                class="w-full px-4 py-3 bg-brand-darkblue/50 border border-brand-blue/30 rounded-lg text-brand-cream placeholder-brand-lightblue/30 focus:outline-none focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow transition-all appearance-none backdrop-blur-sm cursor-pointer">
+                                <option value="" disabled selected>Select Period</option>
+                                <option value="M1">Period M1 (7:30 - 8:30)</option>
+                                <option value="M2">Period M2 (8:30 - 9:30)</option>
+                                <option value="PM">Period M (9:00 - 10:00)</option>
+                                <option value="1">Period 1 (10:00 - 11:00)</option>
+                                <option value="2">Period 2 (11:00 - 12:00)</option>
+                                <option value="3">Period 3 (12:00 - 13:00)</option>
+                                <option value="L">Period L (13:00 - 14:00)</option>
+                                <option value="4">Period 4 (14:00 - 15:00)</option>
+                                <option value="5">Period 5 (15:00 - 16:00)</option>
+                                <option value="6">Period 6 (16:00 - 17:00)</option>
+                            </select>
+                            <div
+                                class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-brand-yellow">
+                                <i class="fas fa-chevron-down text-xs"></i>
                             </div>
                         </div>
+                        <button type="button" id="yf-add-btn"
+                            class="px-4 py-3 bg-brand-blue/20 hover:bg-brand-blue/40 text-brand-yellow border border-brand-blue/30 rounded-lg transition-colors flex items-center justify-center">
+                            <i class="fas fa-plus"></i>
+                        </button>
                     </div>
-                    <button type="button" id="yf-add-btn"
-                        class="px-4 py-2 bg-brand-blue/20 hover:bg-brand-blue/40 text-brand-yellow border border-brand-blue/30 rounded-lg transition-colors flex items-center justify-center">
-                        <i class="fas fa-plus"></i>
-                    </button>
                 </div>
             </div>
 
@@ -1242,13 +1231,13 @@
             </div>
         </div>
 
-        <div class="mt-8 flex gap-3">
+        <div class="mt-8 flex gap-4">
             <button type="button" id="yf-cancel-btn"
-                class="flex-1 py-3 border border-brand-greyblue/30 text-brand-greyblue rounded-xl font-semibold hover:bg-white/5 transition-colors">
+                class="flex-1 py-3 md:py-4 border border-brand-greyblue/30 text-brand-greyblue rounded-xl font-semibold text-sm uppercase tracking-wide hover:bg-white/5 hover:text-white transition-all">
                 Cancel
             </button>
             <button type="button" id="yf-confirm-btn"
-                class="flex-1 py-3 bg-brand-yellow text-brand-darkblue rounded-xl font-bold uppercase tracking-wider hover:scale-[1.02] shadow-[0_0_20px_rgba(203,187,104,0.3)] transition-all">
+                class="flex-1 py-3 md:py-4 bg-brand-yellow text-brand-darkblue rounded-xl font-bold text-sm uppercase tracking-wider hover:scale-[1.02] shadow-[0_0_20px_rgba(203,187,104,0.3)] transition-all">
                 Confirm
             </button>
         </div>
