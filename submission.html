@@ -357,8 +357,17 @@
                                     placeholder="Enter your college name">
                             </div>
 
+                            <!-- Course Name -->
+                            <div id="course-field" class="space-y-2 hidden">
+                                <label for="course"
+                                    class="text-sm font-semibold text-brand-greyblue uppercase tracking-wider">Course /
+                                    Degree</label>
+                                <input type="text" id="course" name="course" class="input-field"
+                                    placeholder="e.g. BBA, B.Com, MBA">
+                            </div>
+
                             <!-- Year of Study -->
-                            <div class="space-y-2">
+                            <div id="year-field" class="space-y-2">
                                 <label for="yearOfStudy"
                                     class="text-sm font-semibold text-brand-greyblue uppercase tracking-wider">Year of
                                     Study</label>
@@ -520,7 +529,7 @@
         // Fetch Live Count & Workshop Status
         (async function fetchStats() {
             try {
-                const GAS_URL = "https://script.google.com/macros/s/AKfycbwMSfFzCxEf9ABt3qdtKqx6ty7_EO3idcMos-4IgyeQ9lXZqiEffxToNkgWclnM_and/exec";
+                const GAS_URL = "https://script.google.com/macros/s/AKfycbxOc31zZPxJLo9ZwWlUQV-FLeXPTcd6YztFFG5cPjf_asFcLOLH8pIvL0CkqYuHrk7dzQ/exec";
                 const response = await fetch(GAS_URL);
                 const data = await response.json();
 
@@ -660,6 +669,7 @@
             const regInput = document.getElementById('regNumber');
             const classInput = document.getElementById('studentClass');
             const collegeInput = document.getElementById('collegeName');
+            const courseInput = document.getElementById('course');
             const yearInput = document.getElementById('yearOfStudy');
 
             function toggleFields() {
@@ -667,17 +677,25 @@
                     christiteFields.classList.remove('hidden');
                     nonChristiteFields.classList.add('hidden');
 
+                    document.getElementById('course-field').classList.add('hidden');
+                    document.getElementById('year-field').classList.add('hidden');
+
                     regInput.required = true;
                     classInput.required = true;
                     collegeInput.required = false;
+                    courseInput.required = false;
                     yearInput.required = false;
                 } else {
                     christiteFields.classList.add('hidden');
                     nonChristiteFields.classList.remove('hidden');
 
+                    document.getElementById('course-field').classList.remove('hidden');
+                    document.getElementById('year-field').classList.remove('hidden');
+
                     regInput.required = false;
                     classInput.required = false;
                     collegeInput.required = true;
+                    courseInput.required = true;
                     yearInput.required = true;
                 }
             }
@@ -858,6 +876,7 @@
                 const campus = document.getElementById('campus').value;
 
                 const collegeName = document.getElementById('collegeName').value;
+                const course = document.getElementById('course').value;
                 const yearOfStudy = document.getElementById('yearOfStudy').value;
 
                 // Determine category or keep it flexible for backend
@@ -878,6 +897,7 @@
                     category: category,
                     // Non-Christite Fields
                     collegeName: collegeName,
+                    course: course,
                     yearOfStudy: yearOfStudy,
 
                     workshop: workshop,
@@ -888,7 +908,7 @@
                     yellowPeriods: yellowData.periods || [] // Send array of selected periods
                 };
 
-                const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwkoqguQTZwODCZzBuC275BMdtyM26j5loqrPZnfegLNmDypqvwnX5sSi6YhS9Tt2I_lg/exec";
+                const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxOc31zZPxJLo9ZwWlUQV-FLeXPTcd6YztFFG5cPjf_asFcLOLH8pIvL0CkqYuHrk7dzQ/exec";
 
                 fetch(SCRIPT_URL, {
                     method: 'POST',
@@ -1170,55 +1190,68 @@
                     <label class="text-xs font-semibold text-brand-greyblue uppercase tracking-wider">Select
                         Period</label>
                     <div class="flex gap-2">
-                        <div class="relative flex-grow">
-                            <select id="yf-period" class="input-field appearance-none cursor-pointer text-sm">
-                                <option value="" disabled selected>Select a time slot...</option>
-                                <option value="M1">Period M1 (7:30 - 8:30)</option>
-                                <option value="M2">Period M2 (8:30 - 9:30)</option>
-                                <option value="PM">Period M (9:00 - 10:00)</option>
-                                <option value="1">Period 1 (10:00 - 11:00)</option>
-                                <option value="2">Period 2 (11:00 - 12:00)</option>
-                                <option value="3">Period 3 (12:00 - 13:00)</option>
-                                <option value="L">Period L (13:00 - 14:00)</option>
-                                <option value="4">Period 4 (14:00 - 15:00)</option>
-                                <option value="5">Period 5 (15:00 - 16:00)</option>
-                                <option value="6">Period 6 (16:00 - 17:00)</option>
-                            </select>
-                            <div
-                                class="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none text-brand-greyblue">
-                                <i class="fas fa-chevron-down text-xs"></i>
+                        <!-- Course (Non-Christite) -->
+                        <div id="course-field" class="flex-grow">
+                            <label class="block text-brand-lightblue text-sm font-bold mb-2 tracking-wide">Course /
+                                Designation</label>
+                            <input type="text" id="course" name="course"
+                                placeholder="e.g. BBA, B.Tech, Corporate Professional"
+                                class="w-full px-4 py-3 bg-brand-darkblue/50 border border-brand-blue/30 rounded-lg text-brand-cream placeholder-brand-lightblue/30 focus:outline-none focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow transition-all backdrop-blur-sm">
+                        </div>
+
+                        <!-- Year of Study (Non-Christite) -->
+                        <div id="year-field" class="flex-grow">
+                            <label class="block text-brand-lightblue text-sm font-bold mb-2 tracking-wide">Year of
+                                Study</label>
+                            <div class="relative">
+                                <select id="yearOfStudy" name="yearOfStudy"
+                                    class="w-full px-4 py-3 bg-brand-darkblue/50 border border-brand-blue/30 rounded-lg text-brand-cream placeholder-brand-lightblue/30 focus:outline-none focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow transition-all appearance-none backdrop-blur-sm cursor-pointer">
+                                    <option value="" disabled selected>Select Year</option>
+                                    <option value="1st Year">1st Year</option>
+                                    <option value="2nd Year">2nd Year</option>
+                                    <option value="3rd Year">3rd Year</option>
+                                    <option value="4th Year">4th Year</option>
+                                    <option value="5th Year">5th Year</option>
+                                    <option value="PG / Masters">PG / Masters</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <div
+                                    class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-brand-yellow">
+                                    <i class="fas fa-chevron-down text-xs"></i>
+                                </div>
                             </div>
                         </div>
-                        <button type="button" id="yf-add-btn"
-                            class="px-4 py-2 bg-brand-blue/20 hover:bg-brand-blue/40 text-brand-yellow border border-brand-blue/30 rounded-lg transition-colors flex items-center justify-center">
-                            <i class="fas fa-plus"></i>
-                        </button>
                     </div>
-                </div>
-
-                <!-- Selected List -->
-                <div class="space-y-2">
-                    <label class="text-xs font-semibold text-brand-greyblue uppercase tracking-wider">Selected
-                        Classes</label>
-                    <div id="yf-list"
-                        class="min-h-[100px] bg-black/40 rounded-lg p-2 space-y-2 border border-brand-greyblue/20 max-h-[150px] overflow-y-auto">
-                        <p id="yf-empty-msg" class="text-center text-gray-500 text-xs py-8">No classes added yet</p>
-                        <!-- Items will be injected here -->
-                    </div>
+                    <button type="button" id="yf-add-btn"
+                        class="px-4 py-2 bg-brand-blue/20 hover:bg-brand-blue/40 text-brand-yellow border border-brand-blue/30 rounded-lg transition-colors flex items-center justify-center">
+                        <i class="fas fa-plus"></i>
+                    </button>
                 </div>
             </div>
 
-            <div class="mt-8 flex gap-3">
-                <button type="button" id="yf-cancel-btn"
-                    class="flex-1 py-3 border border-brand-greyblue/30 text-brand-greyblue rounded-xl font-semibold hover:bg-white/5 transition-colors">
-                    Cancel
-                </button>
-                <button type="button" id="yf-confirm-btn"
-                    class="flex-1 py-3 bg-brand-yellow text-brand-darkblue rounded-xl font-bold uppercase tracking-wider hover:scale-[1.02] shadow-[0_0_20px_rgba(203,187,104,0.3)] transition-all">
-                    Confirm
-                </button>
+            <!-- Selected List -->
+            <div class="space-y-2">
+                <label class="text-xs font-semibold text-brand-greyblue uppercase tracking-wider">Selected
+                    Classes</label>
+                <div id="yf-list"
+                    class="min-h-[100px] bg-black/40 rounded-lg p-2 space-y-2 border border-brand-greyblue/20 max-h-[150px] overflow-y-auto">
+                    <p id="yf-empty-msg" class="text-center text-gray-500 text-xs py-8">No classes added yet</p>
+                    <!-- Items will be injected here -->
+                </div>
             </div>
         </div>
+
+        <div class="mt-8 flex gap-3">
+            <button type="button" id="yf-cancel-btn"
+                class="flex-1 py-3 border border-brand-greyblue/30 text-brand-greyblue rounded-xl font-semibold hover:bg-white/5 transition-colors">
+                Cancel
+            </button>
+            <button type="button" id="yf-confirm-btn"
+                class="flex-1 py-3 bg-brand-yellow text-brand-darkblue rounded-xl font-bold uppercase tracking-wider hover:scale-[1.02] shadow-[0_0_20px_rgba(203,187,104,0.3)] transition-all">
+                Confirm
+            </button>
+        </div>
+    </div>
     </div>
 
     <!-- Loading Overlay -->
