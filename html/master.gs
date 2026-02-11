@@ -71,6 +71,7 @@ function doPost(e) {
             // Christite Specific
             regNumber: payload.regNumber || "",
             studentClass: payload.studentClass || "",
+            campus: payload.campus || "",
             category: payload.category || "General",
             // Non-Christite Specific
             studentType: payload.studentType || "Christite",
