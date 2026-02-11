@@ -8,7 +8,7 @@
 
 const REG_CONFIG = {
     ROOT_FOLDER: "Fest Website System",
-    QR_FOLDER: "Registration QRs",
+    QR_FOLDER: "1dpogF1zrIgcaQoZyq6B3mMXLxo-wklcj",
     SHEETS: {
         SOURCE: "Form Responses 1",
         TARGET: "Data"
@@ -19,7 +19,7 @@ const REG_CONFIG = {
         PENDING: "PENDING_PROCESSING",
         DONE: "COMPLETED"
     },
-    UPLOAD_FOLDER_ID: "1Uw3LrkYf269lyxqy3tNgm11xbCNt19eD", // Payment Screenshots Folder
+    UPLOAD_FOLDER_ID: "1uOy6L8rWVZNL4SFr7AEMfSaoofNfPNNN", // Payment Screenshots Folder
     WORKSHOP_CAPACITIES: {
         "Financial Literacy for Professionals": 72,
         "Digital Marketing": 125,
@@ -385,9 +385,9 @@ function createQRCode(data) {
     }
 }
 
+
 function getOrCreateQRFolder() {
-    const root = getOrCreateFolder(REG_CONFIG.ROOT_FOLDER);
-    return getOrCreateFolder(REG_CONFIG.QR_FOLDER, root);
+    return DriveApp.getFolderById(REG_CONFIG.QR_FOLDER);
 }
 
 function getOrCreateFolder(name, parent) {

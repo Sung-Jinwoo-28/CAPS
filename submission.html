@@ -529,7 +529,7 @@
         // Fetch Live Count & Workshop Status
         (async function fetchStats() {
             try {
-                const GAS_URL = "https://script.google.com/macros/s/AKfycbzjyQu7VZwRwHYJkHzZYKIxgHQAYJUo9LEMYob1xD44pTCOXUYsNOFSyinovO3E7t4_Jw/exec";
+                const GAS_URL = "https://script.google.com/macros/s/AKfycbyMawdzJo7b9nm4Zl3aAEbNP8k7uAwGQkddN8HxrqqSXggpO2iuA3VqpHIEXPH4L8v0MA/exec";
                 const response = await fetch(GAS_URL);
                 const data = await response.json();
 
@@ -908,7 +908,7 @@
                     yellowPeriods: yellowData.periods || [] // Send array of selected periods
                 };
 
-                const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzjyQu7VZwRwHYJkHzZYKIxgHQAYJUo9LEMYob1xD44pTCOXUYsNOFSyinovO3E7t4_Jw/exec";
+                const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyMawdzJo7b9nm4Zl3aAEbNP8k7uAwGQkddN8HxrqqSXggpO2iuA3VqpHIEXPH4L8v0MA/exec";
 
                 fetch(SCRIPT_URL, {
                     method: 'POST',
