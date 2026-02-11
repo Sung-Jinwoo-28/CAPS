@@ -280,40 +280,101 @@
                                 placeholder="9876543210" required>
                         </div>
 
-                        <!-- Registered Number -->
+                        <!-- Student Type Selection -->
                         <div class="space-y-2">
-                            <label for="regNumber"
-                                class="text-sm font-semibold text-brand-greyblue uppercase tracking-wider">Registered
-                                Number</label>
-                            <input type="text" id="regNumber" name="regNumber" class="input-field" placeholder="2524121"
-                                required>
-                        </div>
-
-                        <!-- Class -->
-                        <div class="space-y-2">
-                            <label for="studentClass"
-                                class="text-sm font-semibold text-brand-greyblue uppercase tracking-wider">Class</label>
-                            <input type="text" id="studentClass" name="studentClass" class="input-field"
-                                placeholder="2BBA FMA B" required>
-                        </div>
-
-                        <!-- Ticket Type -->
-                        <div class="space-y-2">
-                            <label for="campus"
-                                class="text-sm font-semibold text-brand-greyblue uppercase tracking-wider">Select
-                                Campus</label>
+                            <label for="studentType"
+                                class="text-sm font-semibold text-brand-greyblue uppercase tracking-wider">Are you a
+                                Christite?</label>
                             <div class="relative">
-                                <select id="campus" name="campus" class="input-field appearance-none cursor-pointer">
-                                    <option value="Yeshwanthpur Campus" class="bg-black text-white">Yeshwanthpur Campus
+                                <select id="studentType" name="studentType"
+                                    class="input-field appearance-none cursor-pointer">
+                                    <option value="Christite" class="bg-black text-white" selected>Yes, I am a Christite
                                     </option>
-                                    <option value="Central Campus" class="bg-black text-white">Central Campus</option>
-                                    <option value="Kengeri Campus" class="bg-black text-white">Kengeri Campus</option>
-                                    <option value="Bannerghatta Road Campus" class="bg-black text-white">Bannerghatta
-                                        Road Campus</option>
+                                    <option value="Non-Christite" class="bg-black text-white">No, I am from another
+                                        Institution</option>
                                 </select>
                                 <div
                                     class="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none text-brand-greyblue">
                                     <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Christite Fields -->
+                        <div id="christite-fields" class="space-y-6">
+                            <!-- Registered Number -->
+                            <div class="space-y-2">
+                                <label for="regNumber"
+                                    class="text-sm font-semibold text-brand-greyblue uppercase tracking-wider">Registered
+                                    Number</label>
+                                <input type="text" id="regNumber" name="regNumber" class="input-field"
+                                    placeholder="2524121" required>
+                            </div>
+
+                            <!-- Class -->
+                            <div class="space-y-2">
+                                <label for="studentClass"
+                                    class="text-sm font-semibold text-brand-greyblue uppercase tracking-wider">Class</label>
+                                <input type="text" id="studentClass" name="studentClass" class="input-field"
+                                    placeholder="2BBA FMA B" required>
+                            </div>
+
+                            <!-- Campus Selection -->
+                            <div class="space-y-2">
+                                <label for="campus"
+                                    class="text-sm font-semibold text-brand-greyblue uppercase tracking-wider">Select
+                                    Campus</label>
+                                <div class="relative">
+                                    <select id="campus" name="campus"
+                                        class="input-field appearance-none cursor-pointer">
+                                        <option value="Yeshwanthpur Campus" class="bg-black text-white">Yeshwanthpur
+                                            Campus
+                                        </option>
+                                        <option value="Central Campus" class="bg-black text-white">Central Campus
+                                        </option>
+                                        <option value="Kengeri Campus" class="bg-black text-white">Kengeri Campus
+                                        </option>
+                                        <option value="Bannerghatta Road Campus" class="bg-black text-white">
+                                            Bannerghatta
+                                            Road Campus</option>
+                                    </select>
+                                    <div
+                                        class="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none text-brand-greyblue">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Non-Christite Fields (Hidden by default) -->
+                        <div id="non-christite-fields" class="space-y-6 hidden">
+                            <!-- College Name -->
+                            <div class="space-y-2">
+                                <label for="collegeName"
+                                    class="text-sm font-semibold text-brand-greyblue uppercase tracking-wider">College/Institution
+                                    Name</label>
+                                <input type="text" id="collegeName" name="collegeName" class="input-field"
+                                    placeholder="Enter your college name">
+                            </div>
+
+                            <!-- Year of Study -->
+                            <div class="space-y-2">
+                                <label for="yearOfStudy"
+                                    class="text-sm font-semibold text-brand-greyblue uppercase tracking-wider">Year of
+                                    Study</label>
+                                <div class="relative">
+                                    <select id="yearOfStudy" name="yearOfStudy"
+                                        class="input-field appearance-none cursor-pointer">
+                                        <option value="" disabled selected class="text-gray-500">Select Year</option>
+                                        <option value="1st Year" class="bg-black text-white">1st Year</option>
+                                        <option value="2nd Year" class="bg-black text-white">2nd Year</option>
+                                        <option value="3rd Year" class="bg-black text-white">3rd Year</option>
+                                        <option value="4th Year" class="bg-black text-white">4th Year</option>
+                                    </select>
+                                    <div
+                                        class="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none text-brand-greyblue">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -581,7 +642,6 @@
             const text = document.getElementById('payText');
 
             // Change to Green to indicate "Clicked/Visited"
-            btn.classList.remove('bg-brand-blue/20', 'border-brand-blue/50', 'text-brand-cream');
             btn.classList.add('bg-green-600', 'border-green-400', 'text-white', 'shadow-[0_0_20px_rgba(34,197,94,0.4)]');
 
             text.innerText = "PAYMENT PAGE OPENED";
@@ -589,6 +649,45 @@
             hasClickedPay = true;
             checkSubmitEnable();
         }
+
+        // Student Type Toggle Logic
+        document.addEventListener('DOMContentLoaded', function () {
+            const studentTypeSelect = document.getElementById('studentType');
+            const christiteFields = document.getElementById('christite-fields');
+            const nonChristiteFields = document.getElementById('non-christite-fields');
+
+            // Inputs to toggle 'required' attribute
+            const regInput = document.getElementById('regNumber');
+            const classInput = document.getElementById('studentClass');
+            const collegeInput = document.getElementById('collegeName');
+            const yearInput = document.getElementById('yearOfStudy');
+
+            function toggleFields() {
+                if (studentTypeSelect.value === 'Christite') {
+                    christiteFields.classList.remove('hidden');
+                    nonChristiteFields.classList.add('hidden');
+
+                    regInput.required = true;
+                    classInput.required = true;
+                    collegeInput.required = false;
+                    yearInput.required = false;
+                } else {
+                    christiteFields.classList.add('hidden');
+                    nonChristiteFields.classList.remove('hidden');
+
+                    regInput.required = false;
+                    classInput.required = false;
+                    collegeInput.required = true;
+                    yearInput.required = true;
+                }
+            }
+
+            // Initial run
+            if (studentTypeSelect) {
+                toggleFields();
+                studentTypeSelect.addEventListener('change', toggleFields);
+            }
+        });
 
         // Global State for Modal Interaction
         let pendingSubmissionDetails = null;
@@ -605,20 +704,31 @@
                 return;
             }
 
-            // 2. Store context and Reset Modal State
+            // 2. Store context
+            const studentType = document.getElementById('studentType').value;
+            // Store file globally if needed or pass directly
             pendingSubmissionDetails = { file: file };
-            selectedPeriods = [];
-            updateYFList();
-            document.getElementById('yf-period').value = "";
 
-            // 3. Show Yellow Form Modal
-            const modal = document.getElementById('yellow-form-modal');
-            const content = document.getElementById('yellow-form-content');
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                content.classList.remove('scale-95', 'opacity-0');
-                content.classList.add('scale-100', 'opacity-100');
-            }, 10);
+            if (studentType === 'Non-Christite') {
+                // BYPASS YELLOW FORM for Non-Christites
+                if (confirm("Confirm details and submit registration?")) {
+                    processFinalSubmission(file, { periods: [] }); // Empty periods
+                }
+            } else {
+                // CHRISTITE FLOW: Show Yellow Form
+                selectedPeriods = [];
+                updateYFList();
+                document.getElementById('yf-period').value = "";
+
+                // 3. Show Yellow Form Modal
+                const modal = document.getElementById('yellow-form-modal');
+                const content = document.getElementById('yellow-form-content');
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    content.classList.remove('scale-95', 'opacity-0');
+                    content.classList.add('scale-100', 'opacity-100');
+                }, 10);
+            }
         });
 
         // Ensure DOM is ready for these listeners
@@ -740,18 +850,36 @@
                 const name = document.getElementById('fullName').value;
                 const email = document.getElementById('email').value;
                 const phone = document.getElementById('phone').value;
+
+                // Fields vary based on student type
+                const studentType = document.getElementById('studentType').value;
                 const regNumber = document.getElementById('regNumber').value;
                 const studentClass = document.getElementById('studentClass').value;
-                const category = document.getElementById('campus').value;
+                const campus = document.getElementById('campus').value;
+
+                const collegeName = document.getElementById('collegeName').value;
+                const yearOfStudy = document.getElementById('yearOfStudy').value;
+
+                // Determine category or keep it flexible for backend
+                // For Non-Christites, category could be "Externals" or the College Name
+                const category = (studentType === 'Christite') ? campus : 'Non-Christite';
+
                 const workshop = document.getElementById('workshop').value;
 
                 const payload = {
+                    studentType: studentType, // "Christite" or "Non-Christite"
                     name: name,
                     email: email,
                     phone: phone,
+                    // Christite Fields
                     regNumber: regNumber,
                     studentClass: studentClass,
+                    campus: campus,
                     category: category,
+                    // Non-Christite Fields
+                    collegeName: collegeName,
+                    yearOfStudy: yearOfStudy,
+
                     workshop: workshop,
                     fileData: fileData,
                     fileName: fileName,

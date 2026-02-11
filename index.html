@@ -364,7 +364,7 @@
 
         <!-- Hero Section -->
         <header
-            class="container mx-auto min-h-screen md:min-h-[90vh] flex flex-col justify-center items-center text-center px-4 relative pb-32 md:pb-0">
+            class="container mx-auto min-h-screen md:min-h-[60vh] flex flex-col justify-center items-center text-center px-4 relative pb-32 md:pb-0 md:py-20">
             <div class="absolute inset-0 flex justify-center items-center opacity-30 pointer-events-none">
                 <div
                     class="w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-brand-blue opacity-40 blur-[100px] md:blur-[150px] rounded-full animate-pulse-slow">
@@ -410,7 +410,7 @@
 
 
             <!-- Countdown Timer -->
-            <div id="countdown" class="mt-16 grid grid-cols-4 gap-2 md:gap-8 max-w-4xl mx-auto w-full px-2 md:px-0">
+            <div id="countdown" class="mt-8 grid grid-cols-4 gap-2 md:gap-8 max-w-4xl mx-auto w-full px-2 md:px-0">
                 <!-- Days -->
                 <div
                     class="glass-panel p-2 md:p-4 rounded-xl flex flex-col items-center justify-center md:min-w-[120px]">
@@ -444,7 +444,7 @@
             <script>
                 // Countdown Logic
                 // Target Date: Feb 16, 2026
-                const targetDate = new Date('February 16, 2026 00:00:00').getTime();
+                const targetDate = new Date('February 16, 2026 10:00:00').getTime();
 
                 function updateCountdown() {
                     const now = new Date().getTime();
@@ -493,7 +493,7 @@
         <!-- Events Section -->
         <section id="events" class="relative">
             <div id="events-pin-wrapper"
-                class="w-full h-screen overflow-hidden flex flex-col justify-center items-center relative py-12">
+                class="w-full min-h-screen overflow-hidden flex flex-col justify-start items-center relative py-12 pt-24">
                 <div class="relative w-full text-center z-10 mb-8 md:mb-12 shrink-0">
                     <h2 class="text-4xl md:text-4xl font-bold text-center text-brand-cream">What's waiting for you?</h2>
                     <p class="text-brand-lightblue mt-4">Scroll to explore</p>
@@ -567,7 +567,7 @@
                                 <p
                                     class="text-sm md:text-lg text-brand-lightblue leading-snug md:leading-relaxed mb-4 md:mb-8 text-center">
                                     Select one specialised track: Building Digital Presence (marketing),
-                                    Design Thinking (innovation), or Data-Driven Intelligence (analytics).
+                                    Data-Driven Intelligence (analytics), or Financial Literacy (strategy).
                                 </p>
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 text-center md:text-left">
                                     <div class="bg-white/5 p-2 md:p-4 border-l-2 border-brand-yellow">
@@ -724,86 +724,135 @@
                 <p class="mt-2 text-5xl font-semibold tracking-tight text-brand-cream sm:text-6xl">Secure Your Pass</p>
             </div>
             <p class="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-brand-lightblue sm:text-xl/8 px-6">
-                Join the elite at the most exclusive confluence of the year.</p>
+                An exclusive experience curated for tomorrow's professionals.
+            </p>
 
-            <div class="mx-auto mt-16 max-w-2xl px-6">
-                <div
-                    class="rounded-3xl glass-panel p-8 ring-1 ring-brand-greyblue/30 sm:p-14 flex flex-col items-center text-center gap-8 hover:ring-brand-yellow/50 transition-all relative overflow-hidden group">
+            <div class="mx-auto mt-16 max-w-7xl px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto">
 
-                    <!-- Decorative Glow -->
+                    <!-- Card 1: Christite Pass -->
                     <div
-                        class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-32 bg-gradient-to-b from-brand-yellow/10 to-transparent blur-3xl pointer-events-none">
-                    </div>
+                        class="rounded-3xl glass-panel p-8 ring-1 ring-brand-greyblue/30 sm:p-10 flex flex-col items-center text-center gap-6 hover:ring-brand-yellow/50 transition-all relative overflow-hidden group">
 
-                    <h3 id="tier-confluence" class="text-2xl font-bold text-brand-yellow tracking-wider uppercase">The
-                        Confluence Pass</h3>
+                        <!-- Decorative Glow -->
+                        <div
+                            class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-32 bg-gradient-to-b from-brand-yellow/10 to-transparent blur-3xl pointer-events-none">
+                        </div>
 
-                    <div class="flex items-baseline gap-x-2">
-                        <span class="text-7xl font-bold tracking-tight text-brand-cream">₹399</span>
-                        <span class="text-xl text-brand-lightblue">/ person</span>
-                    </div>
+                        <h3 class="text-2xl font-bold text-brand-yellow tracking-wider uppercase whitespace-nowrap">
+                            Christite Pass
+                        </h3>
 
-                    <p class="text-lg text-brand-lightblue max-w-lg mx-auto">
-                        Join the Confluence and transform your
-                        potential.
-                    </p>
+                        <div class="flex items-baseline gap-x-2 whitespace-nowrap mb-4">
+                            <span class="text-5xl font-bold tracking-tight text-brand-cream">₹299</span>
+                            <span class="text-xl text-brand-lightblue">/ person</span>
+                        </div>
 
-                    <!-- Features Divider -->
-                    <div class="w-24 h-1 bg-gradient-to-r from-transparent via-brand-blue to-transparent opacity-50">
-                    </div>
-
-                    <ul role="list" class="space-y-4 text-left text-brand-lightblue w-full max-w-md mx-auto">
-                        <li class="flex items-center gap-4">
-                            <div
-                                class="w-8 h-8 rounded-full bg-brand-yellow/10 flex items-center justify-center shrink-0">
-                                <i class="fas fa-check text-brand-yellow text-sm"></i>
-                            </div>
-                            <span class="text-lg">Full access to CAPS Confluence</span>
-                        </li>
-                        <li class="flex items-center gap-4">
-                            <div
-                                class="w-8 h-8 rounded-full bg-brand-yellow/10 flex items-center justify-center shrink-0">
-                                <i class="fas fa-check text-brand-yellow text-sm"></i>
-                            </div>
-                            <span class="text-lg">Exclusive Panel Discussions & Fireside Chats</span>
-                        </li>
-                        <li class="flex items-center gap-4">
-                            <div
-                                class="w-8 h-8 rounded-full bg-brand-yellow/10 flex items-center justify-center shrink-0">
-                                <i class="fas fa-check text-brand-yellow text-sm"></i>
-                            </div>
-                            <span class="text-lg">Workshops</span>
-                        </li>
-                        <li class="flex items-center gap-4">
-                            <div
-                                class="w-8 h-8 rounded-full bg-brand-yellow/10 flex items-center justify-center shrink-0">
-                                <i class="fas fa-check text-brand-yellow text-sm"></i>
-                            </div>
-                            <span class="text-lg">Networking with Industry Experts</span>
-                        </li>
-                        <li class="flex items-center gap-4">
-                            <div
-                                class="w-8 h-8 rounded-full bg-brand-yellow/10 flex items-center justify-center shrink-0">
-                                <i class="fas fa-check text-brand-yellow text-sm"></i>
-                            </div>
-                            <span class="text-lg">Official Participation Certificate</span>
-                        </li>
-                    </ul>
-
-                    <div class="w-full pt-8">
-                        <a href="submission.html" aria-describedby="tier-confluence"
-                            class="relative block w-full px-8 py-5 bg-brand-yellow text-brand-darkblue rounded-xl font-bold text-xl tracking-wider uppercase overflow-hidden transition-all hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(203,187,104,0.4)] group">
-                            <span class="relative z-10 flex items-center justify-center gap-3">
-                                Secure Your Spot <i
-                                    class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                            </span>
-                            <div
-                                class="absolute inset-0 h-full w-full bg-gradient-to-r from-transparent via-brand-cream to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500">
-                            </div>
-                        </a>
-                        <p class="mt-4 text-sm text-brand-greyblue">Limited seats available. First come, first serve.
+                        <p class="text-base text-brand-lightblue max-w-xs mx-auto mb-2">
+                            Exclusive access for Christ University students.
                         </p>
+
+                        <!-- Features Divider -->
+                        <div
+                            class="w-16 h-1 bg-gradient-to-r from-transparent via-brand-blue to-transparent opacity-50 mb-2">
+                        </div>
+
+                        <ul role="list"
+                            class="space-y-3 text-left text-brand-lightblue w-full max-w-sm mx-auto text-lg">
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check text-brand-yellow"></i>
+                                <span>Full access to CAPS Confluence</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check text-brand-yellow"></i>
+                                <span>Panel Discussions & Fireside Chats</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check text-brand-yellow"></i>
+                                <span>Certified Workshops</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check text-brand-yellow"></i>
+                                <span>Networking & Certificates</span>
+                            </li>
+                        </ul>
+
+                        <div class="w-full pt-4 mt-auto">
+                            <a href="submission.html"
+                                class="relative block w-full px-6 py-4 bg-brand-yellow text-brand-darkblue rounded-xl font-bold text-lg tracking-wider uppercase overflow-hidden transition-all hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(203,187,104,0.4)] group">
+                                <span class="relative z-10 flex items-center justify-center gap-2">
+                                    Register <i
+                                        class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                                </span>
+                                <div
+                                    class="absolute inset-0 h-full w-full bg-gradient-to-r from-transparent via-brand-cream to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500">
+                                </div>
+                            </a>
+                        </div>
                     </div>
+
+                    <!-- Card 2: Non-Christite Pass -->
+                    <div
+                        class="rounded-3xl glass-panel p-8 ring-1 ring-brand-greyblue/30 sm:p-10 flex flex-col items-center text-center gap-6 hover:ring-brand-blue/50 transition-all relative overflow-hidden group">
+
+                        <!-- Decorative Glow (Blue for distinction) -->
+                        <div
+                            class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-32 bg-gradient-to-b from-brand-blue/20 to-transparent blur-3xl pointer-events-none">
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-brand-lightblue tracking-wider uppercase whitespace-nowrap">
+                            Non-Christite
+                            Pass</h3>
+
+                        <div class="flex items-baseline gap-x-2 whitespace-nowrap mb-4">
+                            <span class="text-5xl font-bold tracking-tight text-white">₹399</span>
+                            <span class="text-xl text-brand-lightblue">/ person</span>
+                        </div>
+
+                        <p class="text-base text-brand-lightblue max-w-xs mx-auto mb-2">
+                            Open to students from all other institutions.
+                        </p>
+
+                        <!-- Features Divider -->
+                        <div
+                            class="w-16 h-1 bg-gradient-to-r from-transparent via-brand-blue to-transparent opacity-50 mb-2">
+                        </div>
+
+                        <ul role="list"
+                            class="space-y-3 text-left text-brand-lightblue w-full max-w-sm mx-auto text-lg">
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check text-brand-blue"></i>
+                                <span>Full access to CAPS Confluence</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check text-brand-blue"></i>
+                                <span>Panel Discussions & Fireside Chats</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check text-brand-blue"></i>
+                                <span>Certified Workshops</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i class="fas fa-check text-brand-blue"></i>
+                                <span>Networking & Certificates</span>
+                            </li>
+                        </ul>
+
+                        <div class="w-full pt-4 mt-auto">
+                            <a href="submission.html"
+                                class="relative block w-full px-6 py-4 bg-brand-digit text-brand-darkblue rounded-xl font-bold text-lg tracking-wider uppercase overflow-hidden transition-all hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(48,87,146,0.4)] group"
+                                style="background-color: #6a86ac; color: white;">
+                                <span class="relative z-10 flex items-center justify-center gap-2">
+                                    Register <i
+                                        class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                                </span>
+                                <div
+                                    class="absolute inset-0 h-full w-full bg-gradient-to-r from-transparent via-white to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
