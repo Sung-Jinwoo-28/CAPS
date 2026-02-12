@@ -520,7 +520,7 @@
     <script>
         // Configuration
         const WORKSHOP_LIMITS = {
-            "Financial Literacy for Professionals": 72,
+            "Financial Literacy for Professionals": 150,
             "Digital Marketing": 125,
             "From Data To Decisions": 125
         };
@@ -529,7 +529,7 @@
         // Fetch Live Count & Workshop Status
         (async function fetchStats() {
             try {
-                const GAS_URL = "https://script.google.com/macros/s/AKfycbyMawdzJo7b9nm4Zl3aAEbNP8k7uAwGQkddN8HxrqqSXggpO2iuA3VqpHIEXPH4L8v0MA/exec";
+                const GAS_URL = "https://script.google.com/macros/s/AKfycbxjS78s581WdxZKfy2zO38g1PS3gXOsMQ5g0nveSzgt1xX9lUNGRwmIxjVdH0qfq6MqKQ/exec";
                 const response = await fetch(GAS_URL);
                 const data = await response.json();
 
@@ -908,7 +908,7 @@
                     yellowPeriods: yellowData.periods || [] // Send array of selected periods
                 };
 
-                const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyMawdzJo7b9nm4Zl3aAEbNP8k7uAwGQkddN8HxrqqSXggpO2iuA3VqpHIEXPH4L8v0MA/exec";
+                const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzjyQu7VZwRwHYJkHzZYKIxgHQAYJUo9LEMYob1xD44pTCOXUYsNOFSyinovO3E7t4_Jw/exec";
 
                 fetch(SCRIPT_URL, {
                     method: 'POST',
