@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://christuniversity.in/center/C/CAPSC/sitemap.xml
+Sitemap: https://www.capsypr.in/sitemap.xml
