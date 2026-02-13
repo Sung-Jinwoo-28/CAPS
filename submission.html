@@ -227,18 +227,7 @@
                     </div>
                 </div>
 
-                <!-- Live Workshop Status (New) -->
-                <div id="workshop-stats-container"
-                    class="hidden lg:block space-y-4 pt-8 border-t border-brand-greyblue/20">
-                    <h3 class="text-brand-cream font-bold uppercase tracking-wider text-sm flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                        Live Availability
-                    </h3>
-                    <div id="workshop-list" class="space-y-3">
-                        <!-- Stat Items will be injected here -->
-                        <div class="h-12 bg-brand-blue/10 rounded-lg animate-pulse"></div>
-                    </div>
-                </div>
+
 
             </div>
 
@@ -290,6 +279,8 @@
                                     class="input-field appearance-none cursor-pointer">
                                     <option value="Christite" class="bg-black text-white" selected>Yes, I am a Christite
                                     </option>
+                                    <option value="Capsite" class="bg-black text-white"> Yes I am a Christite,
+                                        CAPSITE@BYC</option>
                                     <option value="Non-Christite" class="bg-black text-white">No, I am from another
                                         Institution</option>
                                 </select>
@@ -562,36 +553,7 @@
                             }
                         });
 
-                        // Update UI Stats Box
-                        const statsList = document.getElementById('workshop-list');
-                        if (statsList) {
-                            statsList.innerHTML = ''; // Clear loading skeleton
 
-                            // Iterate over known workshops to ensure order
-                            const workshops = ["Digital Marketing", "From Data To Decisions", "Financial Literacy for Professionals"];
-
-                            workshops.forEach(wsTitle => {
-                                const count = counts[wsTitle] || 0;
-                                const limit = WORKSHOP_LIMITS[wsTitle] || DEFAULT_LIMIT;
-                                const isFull = count >= limit;
-                                const percentage = Math.min(100, (count / limit) * 100);
-
-                                const html = `
-                                    <div class="flex flex-col gap-1.5 p-2 transition-all hover:bg-white/5 rounded-lg">
-                                        <div class="flex justify-between items-center">
-                                            <span class="text-sm font-medium text-brand-lightblue uppercase tracking-wider">${wsTitle}</span>
-                                            <span class="text-xs font-bold ${isFull ? 'text-red-400' : 'text-brand-yellow'}">
-                                                ${isFull ? 'FULL' : `${count}/${limit}`}
-                                            </span>
-                                        </div>
-                                        <div class="w-full bg-brand-blue/20 h-1 rounded-full overflow-hidden">
-                                            <div class="h-full ${isFull ? 'bg-red-500' : 'bg-brand-cream/80'} transition-all duration-1000 shadow-[0_0_10px_rgba(255,255,255,0.3)]" style="width: ${percentage}%"></div>
-                                        </div>
-                                    </div>
-                                `;
-                                statsList.innerHTML += html;
-                            });
-                        }
                     }
 
 
@@ -625,7 +587,11 @@
 
         function checkSubmitEnable() {
             const btn = document.getElementById('submitBtn');
-            if (hasClickedPay && hasUploadedFile) {
+            const studentType = document.getElementById('studentType').value;
+            const isCapsite = studentType === 'Capsite';
+
+            // Capsites don't need to click Pay Now
+            if ((hasClickedPay || isCapsite) && hasUploadedFile) {
                 btn.disabled = false;
                 btn.classList.remove('grayscale', 'opacity-50', 'cursor-not-allowed');
                 btn.classList.add('hover:scale-[1.02]', 'hover:shadow-[0_0_40px_rgba(203,187,104,0.4)]');
@@ -673,7 +639,11 @@
             const yearInput = document.getElementById('yearOfStudy');
 
             function toggleFields() {
-                if (studentTypeSelect.value === 'Christite') {
+                const val = studentTypeSelect.value;
+                const payBtnContainer = document.getElementById('payNowBtn').parentElement;
+                const proofLabel = document.querySelector('label[for="paymentProof"]');
+
+                if (val === 'Christite' || val === 'Capsite') {
                     christiteFields.classList.remove('hidden');
                     nonChristiteFields.classList.add('hidden');
 
@@ -685,6 +655,16 @@
                     collegeInput.required = false;
                     courseInput.required = false;
                     yearInput.required = false;
+
+                    // Capsite Specifics
+                    if (val === 'Capsite') {
+                        payBtnContainer.classList.add('hidden');
+                        proofLabel.innerText = "Proof that you are a capsite";
+                    } else {
+                        payBtnContainer.classList.remove('hidden');
+                        proofLabel.innerText = "Payment Screenshots";
+                    }
+
                 } else {
                     christiteFields.classList.add('hidden');
                     nonChristiteFields.classList.remove('hidden');
@@ -697,7 +677,12 @@
                     collegeInput.required = true;
                     courseInput.required = true;
                     yearInput.required = true;
+
+                    // Reset for Non-Christite
+                    payBtnContainer.classList.remove('hidden');
+                    proofLabel.innerText = "Payment Screenshots";
                 }
+                checkSubmitEnable();
             }
 
             // Initial run
@@ -886,7 +871,7 @@
                 const workshop = document.getElementById('workshop').value;
 
                 const payload = {
-                    studentType: studentType, // "Christite" or "Non-Christite"
+                    studentType: (studentType === 'Capsite') ? 'Christite' : studentType, // "Christite" or "Non-Christite"
                     name: name,
                     email: email,
                     phone: phone,
@@ -1132,7 +1117,8 @@
                         class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-yellow text-brand-darkblue flex items-center justify-center font-bold text-xs mt-0.5">1</span>
                     <p class="text-brand-lightblue text-sm">Select <strong class="text-brand-cream">Fee name as
                             CAPS</strong> and Select your category <strong class="text-brand-cream">Non Christite or
-                            Christite</strong>.</p>
+                            Christite</strong>.<br><span class="text-brand-yellow/80 mt-1 block font-semibold">(For
+                            Christites Workshop only pass is also available)</span></p>
                 </div>
                 <div class="flex gap-4 items-start p-3 bg-white/5 rounded-lg border border-white/5">
                     <span

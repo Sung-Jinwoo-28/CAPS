@@ -176,29 +176,7 @@ function doPost(e) {
     }
 }
 
-function getWorkshopCount(workshopName) {
-    try {
-        const ss = SpreadsheetApp.getActiveSpreadsheet();
-        let totalCount = 0;
 
-        // Count from Unified Main Sheet
-        const sheet = ss.getSheetByName("Data");
-        if (sheet) {
-            const data = sheet.getDataRange().getValues();
-            // Workshop is now column H (Index 7) in the new unified schema
-            // [ID, Name, Email|Phone, StudentType, Campus/College, Reg/Year, Class, Workshop, ...]
-            for (let i = 1; i < data.length; i++) {
-                if (data[i][7] === workshopName) {
-                    totalCount++;
-                }
-            }
-        }
-        return totalCount;
-    } catch (e) {
-        console.error("Count check failed", e);
-        return 0; // Fail open
-    }
-}
 
 function doGet(e) {
     try {
@@ -206,20 +184,21 @@ function doGet(e) {
         let totalEntries = 0;
         const workshopCounts = {};
 
-        // Process Unified Main Sheet
-        const sheet = ss.getSheetByName(REG_CONFIG.SHEETS.TARGET);
-        if (sheet) {
-            const data = sheet.getDataRange().getValues();
-            const rows = data.slice(1); // Remove header
-            totalEntries = rows.length;
+        // 1. Calculate Workshop Counts directly from their sheets
+        // This is faster and more accurate than iterating the main data sheets
+        const workshopNames = Object.keys(REG_CONFIG.WORKSHOP_CAPACITIES);
+        
+        workshopNames.forEach(name => {
+            const wsSheet = ss.getSheetByName(name);
+            const count = wsSheet ? Math.max(0, wsSheet.getLastRow() - 1) : 0;
+            if (count > 0) {
+                workshopCounts[name] = count;
+                totalEntries += count; 
+            }
+        });
 
-            rows.forEach(row => {
-                const workshop = row[7]; // Column H (Index 7) in new schema
-                if (workshop) {
-                    workshopCounts[workshop] = (workshopCounts[workshop] || 0) + 1;
-                }
-            });
-        }
+        // NOTE: Total Entries is now strictly the sum of workshop participants.
+        // This ensures the live tracker matches the workshop sheets exactly.
 
         const seatsLeft = Math.max(0, 500 - totalEntries);
 
