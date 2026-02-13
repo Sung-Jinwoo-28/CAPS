@@ -1412,6 +1412,79 @@
             }
         });
     </script>
+    <!-- Full Screen Notification Overlay -->
+    <div id="notification-overlay"
+        class="fixed inset-0 z-[10000] bg-black/80 backdrop-blur-sm hidden flex items-center justify-center opacity-0 transition-opacity duration-500">
+        <div class="relative w-full max-w-4xl max-h-[90vh] p-4 flex items-center justify-center">
+            <button id="close-notification"
+                class="absolute top-4 right-4 md:-top-10 md:-right-10 text-white hover:text-brand-yellow transition-colors z-50 bg-brand-darkblue/50 hover:bg-brand-darkblue rounded-full p-2 backdrop-blur-md border border-white/10">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <img src="canvas/speakers_Website.png" alt="Special Announcement"
+                class="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl border border-brand-greyblue/20 animate-[scale-up_0.5s_ease-out_forwards]">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const notificationOverlay = document.getElementById('notification-overlay');
+            const closeBtn = document.getElementById('close-notification');
+
+            // Function to show notification
+            const showNotification = () => {
+                notificationOverlay.classList.remove('hidden');
+                // Small delay to allow display:block to apply before opacity transition
+                setTimeout(() => {
+                    notificationOverlay.classList.remove('opacity-0');
+                }, 10);
+            };
+
+            // Show notification after 3.5 seconds (allowing time for loader and initial hero animations)
+            setTimeout(() => {
+                showNotification();
+            }, 3500);
+
+            // Close function
+            const closeNotification = () => {
+                notificationOverlay.classList.add('opacity-0');
+                setTimeout(() => {
+                    notificationOverlay.classList.add('hidden');
+                }, 500);
+            };
+
+            closeBtn.addEventListener('click', closeNotification);
+
+            // Close on click outside
+            notificationOverlay.addEventListener('click', (e) => {
+                if (e.target === notificationOverlay) {
+                    closeNotification();
+                }
+            });
+
+            // Close on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !notificationOverlay.classList.contains('hidden')) {
+                    closeNotification();
+                }
+            });
+        });
+    </script>
+    <style>
+        @keyframes scale-up {
+            from {
+                transform: scale(0.95);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
 </body>
 
 </html>
