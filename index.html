@@ -776,6 +776,31 @@
             </div>
         </section>
 
+        <!-- Highlights Video Section -->
+        <section id="highlights" class="py-12 relative z-10 w-full">
+            <div class="h-full w-full">
+                <div class="relative overflow-hidden group">
+                    <!-- Video -->
+                    <video id="highlight-video" class="w-full h-auto object-cover max-h-screen" loop playsinline>
+                        <source src="canvas/highlights.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+
+                    <!-- Overlay/Gradient -->
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-brand-darkblue/80 via-transparent to-transparent pointer-events-none">
+                    </div>
+
+                    <!-- Optional Caption -->
+                    <div class="absolute bottom-6 left-6 md:bottom-10 md:left-10 text-brand-cream z-10">
+                        <h3 class="text-2xl md:text-4xl font-bold uppercase tracking-widest drop-shadow-md">SEE YOU ON
+                            16th.....
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Pricing Section -->
         <section id="pricing" class="relative isolate py-24 sm:py-32 bg-transparent text-white">
             <!-- Background Blur -->
@@ -1494,6 +1519,24 @@
             }
         }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const video = document.getElementById('highlight-video');
+            if (video) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            video.play().catch(e => console.log("Autoplay prevented:", e));
+                        } else {
+                            video.pause();
+                        }
+                    });
+                }, { threshold: 0.25 }); // Play when 25% visible to ensure it starts easily
+
+                observer.observe(video);
+            }
+        });
+    </script>
 </body>
 
 </html>
