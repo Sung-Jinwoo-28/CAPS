@@ -781,7 +781,7 @@
             <div class="h-full w-full">
                 <div class="relative overflow-hidden group">
                     <!-- Video -->
-                    <video id="highlight-video" class="w-full h-auto object-cover max-h-screen" loop playsinline>
+                    <video id="highlight-video" class="w-full h-auto object-cover max-h-screen" loop muted playsinline>
                         <source src="canvas/highlights.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
@@ -797,6 +797,12 @@
                             16th.....
                         </h3>
                     </div>
+
+                    <!-- Mute Toggle Button -->
+                    <button id="mute-toggle"
+                        class="absolute bottom-6 right-6 z-20 bg-black/50 hover:bg-black/70 text-white rounded-full p-3 backdrop-blur-sm transition-all focus:outline-none">
+                        <i class="fas fa-volume-mute text-xl w-6 h-6 flex items-center justify-center"></i>
+                    </button>
                 </div>
             </div>
         </section>
@@ -1534,6 +1540,22 @@
                 }, { threshold: 0.25 }); // Play when 25% visible to ensure it starts easily
 
                 observer.observe(video);
+
+                // Mute Toggle Logic
+                const muteBtn = document.getElementById('mute-toggle');
+                if (muteBtn) {
+                    muteBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        video.muted = !video.muted;
+                        const icon = muteBtn.querySelector('i');
+                        if (video.muted) {
+                            icon.className = 'fas fa-volume-mute text-xl w-6 h-6 flex items-center justify-center';
+                        } else {
+                            icon.className = 'fas fa-volume-up text-xl w-6 h-6 flex items-center justify-center';
+                        }
+                    });
+                }
             }
         });
     </script>
